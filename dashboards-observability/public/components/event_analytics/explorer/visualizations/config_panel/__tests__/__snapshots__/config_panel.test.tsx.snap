@@ -694,9 +694,9 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                           },
                           Object {
                             "editor": [Function],
-                            "id": "chart_options",
-                            "mapTo": "chartOptions",
-                            "name": "Chart options",
+                            "id": "chart_styles",
+                            "mapTo": "chartStyles",
+                            "name": "Chart Styles",
                             "schemas": Array [
                               Object {
                                 "component": null,
@@ -721,6 +721,28 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                     },
                                   ],
                                 },
+                              },
+                              Object {
+                                "component": [Function],
+                                "defaultState": Object {
+                                  "name": "default",
+                                },
+                                "eleType": "colorpicker",
+                                "isSingleSelection": true,
+                                "mapTo": "colorTheme",
+                                "name": "Color Theme",
+                                "options": Array [
+                                  Object {
+                                    "title": "Default",
+                                    "type": "text",
+                                    "value": "default",
+                                  },
+                                  Object {
+                                    "title": "Single Color",
+                                    "type": "text",
+                                    "value": "singleColor",
+                                  },
+                                ],
                               },
                             ],
                           },
