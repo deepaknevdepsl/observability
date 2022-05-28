@@ -33,6 +33,10 @@ export const Pie = ({ visualizations, layout, config }: any) => {
     valueSeries = defaultAxes.yaxis || take(fields, lastIndex > 0 ? lastIndex : 1);
   }
 
+  const invertHex = (hex:string) => {
+    return (Number(`0x1${hex}`) ^ 0xFFFFFF).toString(16).substr(1).toUpperCase()
+  }
+  
   const pies = valueSeries.map((field: any, index) => {
     const marker =
       colorTheme.name !== DEFAULT_PALETTE
@@ -40,7 +44,7 @@ export const Pie = ({ visualizations, layout, config }: any) => {
             marker: {
               colors: [...Array(data[field.name].length).fill(colorTheme.color)],
               line: {
-                color: '#000000',
+                color: invertHex(colorTheme),
                 width: 1,
               },
             },
