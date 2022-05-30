@@ -616,3 +616,29 @@ describe('Renders data view', () => {
     cy.get('[data-test-subj="workspace__dataTable"]').should('not.exist');
   });
 });
+
+describe('Render Pie chart for Legend ', () => {
+  beforeEach(() => {
+    cy.wait(2000);
+    landOnEventVisualizations();
+    querySearch(TEST_QUERIES[5].query, TEST_QUERIES[5].dateRangeDOM);
+    cy.get('[data-test-subj="configPane__vizTypeSelector"] [data-test-subj="comboBoxInput"]').click();
+    cy.get('[data-test-subj="comboBoxOptionsList "] button span').contains('Pie').click();
+  });
+
+  it('Render Pie chart and verify legends for Show and Hidden', () => {
+    cy.get('[data-text="Show"]').should('have.text', 'Show');
+    cy.get('[data-text="Show"] [data-test-subj="show"]').should('have.attr', 'checked');
+    cy.get('[data-text="Hidden"]').should('have.text', 'Hidden').click();
+    cy.get('[data-text="Hidden"] [data-test-subj="hidden"]').should('not.have.attr', 'checked');
+    cy.get('[data-test-subj="visualizeEditorRenderButton"]').click({ force: true });
+  });
+
+  it('Render Pie chart and verify legends for Position Right and Bottom', () => {
+    cy.get('[data-text="Right"]').should('have.text', 'Right');
+    cy.get('[data-text="Right"] [data-test-subj="v"]').should('have.attr', 'checked');
+    cy.get('[data-text="Bottom"]').should('have.text', 'Bottom').click();
+    cy.get('[data-text="Bottom"] [data-test-subj="h"]').should('not.have.attr', 'checked');
+    cy.get('[data-test-subj="visualizeEditorRenderButton"]').click({ force: true });
+  })
+});
