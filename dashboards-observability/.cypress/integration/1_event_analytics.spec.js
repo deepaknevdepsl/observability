@@ -17,7 +17,8 @@ import {
   landOnEventHome,
   landOnEventExplorer,
   landOnEventVisualizations,
-  landOnPanels
+  landOnPanels,
+  renderPieChart
 } from '../utils/event_constants';
 import { supressResizeObserverIssue } from '../utils/constants';
 
@@ -614,5 +615,17 @@ describe('Renders data view', () => {
     cy.get('[data-test-subj="workspace__dataTable"]').should('exist');
     cy.get('[data-test-subj="workspace__dataTableViewSwitch"]').click();
     cy.get('[data-test-subj="workspace__dataTable"]').should('not.exist');
+  });
+});
+
+describe('Renders Pie chart', () =>{
+  beforeEach(() => {
+    landOnEventVisualizations();
+});
+
+it.only('Renders Pie chart with single color', () => {
+  renderPieChart();
+    cy.get('.euiFlexItem.euiFlexItem--flexGrowZero .euiButton__text').eq(2).click();
+    cy.wait(delay);
   });
 });
