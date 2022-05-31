@@ -623,7 +623,7 @@ describe('Renders Pie chart', () =>{
     landOnEventVisualizations();
 });
 
-it.only('Renders Pie chart with single color', () => {
+it('Renders Pie chart with single color', () => {
   renderPieChart();
     cy.get('.euiFlexItem.euiFlexItem--flexGrowZero .euiButton__text').eq(2).click();
     cy.wait(delay);
