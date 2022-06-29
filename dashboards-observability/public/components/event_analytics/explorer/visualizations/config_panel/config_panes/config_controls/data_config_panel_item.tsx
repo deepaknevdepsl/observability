@@ -143,7 +143,7 @@ export const DataConfigPanelItem = ({ fieldOptionList, visualizations }: any) =>
                 <h5>{index === 0 ? 'X-Axis' : 'Y-Axis'}</h5>
               </EuiTitle>
             )}
-            <EuiPanel color="subdued">
+            <EuiPanel color="subdued" style={{padding:'1px'}}>
               <EuiFormRow
                 label="Aggregation"
                 labelAppend={
