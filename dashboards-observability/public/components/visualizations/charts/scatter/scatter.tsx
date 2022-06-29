@@ -128,7 +128,7 @@ export const Scatter = ({ visualizations, layout, config }: any) => {
           thresholdTraces.y.push(thr.value * (1 + 0.06));
           thresholdTraces.text.push(thr.name);
           return {
-            type: 'line',
+            type: 'scatter',
             x0: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name][0],
             y0: thr.value,
             x1: last(data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name]),
