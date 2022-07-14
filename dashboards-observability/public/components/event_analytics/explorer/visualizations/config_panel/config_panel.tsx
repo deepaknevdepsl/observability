@@ -127,7 +127,8 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
       bar: isValidValueOptionsXYAxes,
       line: isValidValueOptionsXYAxes,
       histogram: isValidValueOptionsXYAxes,
-      pie: isValidValueOptionsXYAxes
+      pie: isValidValueOptionsXYAxes,
+      scatter: isValidValueOptionsXYAxes,
     }
     return isValid_valueOptions[curVisId];
   }, [vizConfigs.dataConfig]);
@@ -221,8 +222,13 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
   };
 
   const memorizedVisualizationTypes = useMemo(() => {
+    let visDefinition = {}
     return ENABLED_VIS_TYPES.map((vs: string) => {
-      const visDefinition = getVisType(vs);
+      if (vs === visChartTypes.Line || vs === visChartTypes.Scatter) {
+        visDefinition = vs === visChartTypes.Line ? getVisType(vs, { type: visChartTypes.Line }) : getVisType(vs, { type: visChartTypes.Scatter });
+      } else {
+        visDefinition = getVisType(vs);
+      }
       return {
         ...visDefinition,
       };

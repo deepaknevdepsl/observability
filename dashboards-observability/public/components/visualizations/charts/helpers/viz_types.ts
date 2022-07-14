@@ -6,6 +6,7 @@
 import { isEmpty, take } from 'lodash';
 import { getVisType } from '../vis_types';
 import { IVisualizationContainerProps, IField, IQuery } from '../../../../../common/types/explorer';
+import { visChartTypes } from '../../../../../common/constants/shared';
 
 interface IVizContainerProps {
   vizId: string;
@@ -37,6 +38,15 @@ export const getVizContainerProps = ({
   userConfigs = {},
   appData = {},
 }: IVizContainerProps): IVisualizationContainerProps => {
+
+  const getVisTypeData = () => {
+    if (vizId === visChartTypes.Line || vizId === visChartTypes.Scatter) {
+      return vizId === visChartTypes.Line ? { ...getVisType(vizId, { type: visChartTypes.Line }) } : { ...getVisType(vizId, { type: visChartTypes.Scatter }) };    
+    } else {
+      return { ...getVisType(vizId) }
+    }
+  }
+
   return {
     data: {
       appData: { ...appData },
@@ -49,7 +59,7 @@ export const getVizContainerProps = ({
       },
     },
     vis: {
-      ...getVisType(vizId),
+      ...getVisTypeData()
     },
   };
 };
