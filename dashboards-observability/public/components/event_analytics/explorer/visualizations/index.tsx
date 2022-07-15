@@ -55,8 +55,14 @@ export const ExplorerVisualizations = ({
     return { ...field, label: field.name };
   })
 
+  function syntheticResize() {
+    var evt = window.document.createEvent('UIEvents'); 
+    evt.initUIEvent('resize', true, false, window, 0); 
+    window.dispatchEvent(evt);
+  }
+
   return (
-    <EuiResizableContainer>
+    <EuiResizableContainer onPanelWidthChange={syntheticResize} >
       {(EuiResizablePanel, EuiResizableButton) => (
         <>
           <EuiResizablePanel initialSize={17} minSize="300" mode="collapsible">
@@ -78,7 +84,7 @@ export const ExplorerVisualizations = ({
             'data-test-subj': 'panel-1-toggle',
             className: 'panel-toggle',
             position: 'top',
-          }]} initialSize={14} minSize="300" style={{ border: "1px solid #D3DAE6", padding: '0px' }}>
+          }]} initialSize={14} minSize="5%" style={{ border: "1px solid #D3DAE6", padding: '0px'}}>
             <div className="">
               {curVisId === visChartTypes.TreeMap ? (
                 <TreemapConfigPanelItem
