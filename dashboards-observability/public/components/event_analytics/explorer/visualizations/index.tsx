@@ -55,8 +55,8 @@ export const ExplorerVisualizations = ({
     return { ...field, label: field.name };
   })
 
-  function syntheticResize() {
-    var evt = window.document.createEvent('UIEvents'); 
+  const syntheticResize = () => {
+    let evt = window.document.createEvent('UIEvents'); 
     evt.initUIEvent('resize', true, false, window, 0); 
     window.dispatchEvent(evt);
   }
