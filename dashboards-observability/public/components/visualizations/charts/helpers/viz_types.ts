@@ -44,9 +44,15 @@ export const getVizContainerProps = ({
   userConfigs = {},
   appData = {},
 }: IVizContainerProps): IVisualizationContainerProps => {
-  const visType = {
-    ...getVisType(vizId),
+  
+  const getVisTypeData = () => {
+    if (vizId === visChartTypes.Bar || vizId === visChartTypes.HorizontalBar) {
+      return vizId === visChartTypes.Bar ? { ...getVisType(vizId, { type: visChartTypes.Bar }) } : { ...getVisType(vizId, { type: visChartTypes.HorizontalBar }) };    
+    } else {
+      return { ...getVisType(vizId) }
+    }
   }
+
   return {
     data: {
       appData: { ...appData },
@@ -55,9 +61,11 @@ export const getVizContainerProps = ({
       indexFields: { ...indexFields },
       userConfigs: { ...userConfigs },
       defaultAxes: {
-        ...getDefaultXYAxisLabels(rawVizData?.metadata?.fields, visType.name),
+        ...getDefaultXYAxisLabels(rawVizData?.metadata?.fields, getVisTypeData().name),
       },
     },
-    vis: visType,
+    vis: {
+      ...getVisTypeData()
+    },
   };
 };

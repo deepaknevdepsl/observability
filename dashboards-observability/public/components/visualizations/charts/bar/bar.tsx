@@ -6,7 +6,7 @@
 import React from 'react';
 import { isEmpty, last, take } from 'lodash';
 import { Plt } from '../../plotly/plot';
-import { LONG_CHART_COLOR, PLOTLY_COLOR } from '../../../../../common/constants/shared';
+import { LONG_CHART_COLOR, PLOTLY_COLOR, visChartTypes } from '../../../../../common/constants/shared';
 import { AvailabilityUnitType } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
 import { ThresholdUnitType } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_thresholds';
 import { hexToRgb } from '../../../event_analytics/utils/utils';
@@ -26,15 +26,17 @@ export const Bar = ({ visualizations, layout, config }: any) => {
     layoutConfig = {},
     availabilityConfig = {},
   } = visualizations?.data?.userConfigs;
+  let visType:string = visualizations.data?.rawVizData?.horizontal_bar ? visChartTypes.HorizontalBar : visChartTypes.Bar;
   const dataConfigTab =
-    visualizations.data?.rawVizData?.bar?.dataConfig &&
-    visualizations.data.rawVizData.bar.dataConfig;
+    visualizations.data?.rawVizData?.[visType]?.dataConfig &&
+    visualizations.data.rawVizData[visType].dataConfig;
   const xaxis = dataConfigTab?.dimensions
     ? dataConfigTab.dimensions.filter((item) => item.label)
     : [];
   const yaxis = dataConfigTab?.metrics ? dataConfigTab.metrics.filter((item) => item.label) : [];
   const barOrientation = dataConfig?.chartStyles?.orientation || vis.orientation;
-  const isVertical = barOrientation === vis.orientation;
+  let isVertical = barOrientation === vis.orientation;
+  isVertical = visType === visChartTypes.Bar ? true : false;
   let bars, valueSeries, valueForXSeries;
 
   if (!isEmpty(xaxis) && !isEmpty(yaxis)) {

@@ -127,7 +127,8 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
       bar: isValidValueOptionsXYAxes,
       line: isValidValueOptionsXYAxes,
       histogram: isValidValueOptionsXYAxes,
-      pie: isValidValueOptionsXYAxes
+      pie: isValidValueOptionsXYAxes,
+      horizontal_bar: isValidValueOptionsXYAxes,
     }
     return isValid_valueOptions[curVisId];
   }, [vizConfigs.dataConfig]);
@@ -221,8 +222,13 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
   };
 
   const memorizedVisualizationTypes = useMemo(() => {
+    let visDefinition = {}
     return ENABLED_VIS_TYPES.map((vs: string) => {
-      const visDefinition = getVisType(vs);
+      if (vs === visChartTypes.Bar || vs === visChartTypes.HorizontalBar) {
+        visDefinition = vs === visChartTypes.Bar ? getVisType(vs, { type: visChartTypes.Bar }) : getVisType(vs, { type: visChartTypes.HorizontalBar });
+      } else {
+        visDefinition = getVisType(vs);
+      }
       return {
         ...visDefinition,
       };
@@ -250,10 +256,6 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     [memorizedVisualizationTypes]
   );
 
-  const vizTypeList = useMemo(() => {
-    return memorizedVisualizationTypes.filter((type) => type.id !== 'horizontal_bar');
-  }, [memorizedVisualizationTypes]);
-
   return (
     <>
       <EuiFlexGroup
@@ -268,7 +270,7 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
           <EuiComboBox
             aria-label="config chart selector"
             placeholder="Select a chart"
-            options={vizTypeList}
+            options={memorizedVisualizationTypes}
             selectedOptions={[getSelectedVisDById(curVisId)]}
             singleSelection
             onChange={(visType) => {
