@@ -265,8 +265,8 @@ exports[`Text component Renders text component 1`] = `
                       "props": Object {
                         "defaultSelections": Array [
                           Object {
-                            "id": "h",
-                            "name": "Horizontal",
+                            "id": "v",
+                            "name": "Vertical",
                           },
                         ],
                         "options": Array [
