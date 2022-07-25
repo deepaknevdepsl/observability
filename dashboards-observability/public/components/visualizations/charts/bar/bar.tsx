@@ -35,8 +35,7 @@ export const Bar = ({ visualizations, layout, config }: any) => {
     : [];
   const yaxis = dataConfigTab?.metrics ? dataConfigTab.metrics.filter((item) => item.label) : [];
   const barOrientation = dataConfig?.chartStyles?.orientation || vis.orientation;
-  let isVertical = barOrientation === vis.orientation;
-  isVertical = visType === visChartTypes.Bar ? true : false;
+  let isVertical = visType === visChartTypes.HorizontalBar ? barOrientation !== vis.orientation : barOrientation === vis.orientation;
   let bars, valueSeries, valueForXSeries;
 
   if (!isEmpty(xaxis) && !isEmpty(yaxis)) {

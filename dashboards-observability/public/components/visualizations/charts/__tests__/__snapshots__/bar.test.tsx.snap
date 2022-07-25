@@ -442,7 +442,7 @@ exports[`Bar component Renders bar component 1`] = `
         "lineWidth": 1,
         "mode": "group",
         "name": undefined,
-        "orientation": "v",
+        "orientation": "h",
         "selection": Object {
           "dataLoss": "nothing",
         },

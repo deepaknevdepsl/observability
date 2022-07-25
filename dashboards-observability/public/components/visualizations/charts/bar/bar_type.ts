@@ -38,7 +38,7 @@ export const createBarTypeDefinition = (params: any) => ({
   icon: LensIconChartBar,
   categoryAxis: 'xaxis',
   seriesAxis: 'yaxis',
-  orientation: params.type === visChartTypes.HorizontalBar ? 'h' : 'v',
+  orientation: params.type === visChartTypes.Bar ? 'v' : 'h',
   mode: 'group',
   labelAngle: 0,
   lineWidth: 1,

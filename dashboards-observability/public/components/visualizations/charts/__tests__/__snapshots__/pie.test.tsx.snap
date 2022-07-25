@@ -282,8 +282,8 @@ exports[`Pie component Renders pie component 1`] = `
                       "props": Object {
                         "defaultSelections": Array [
                           Object {
-                            "id": "v",
-                            "name": "Vertical",
+                            "id": "h",
+                            "name": "Horizontal",
                           },
                         ],
                         "options": Array [
@@ -431,18 +431,18 @@ exports[`Pie component Renders pie component 1`] = `
           ],
         },
         "fillOpacity": 80,
-        "fullLabel": "Bar",
+        "fullLabel": "Horizontal Bar",
         "groupWidth": 0.7,
         "icon": [Function],
         "iconType": "visBarVerticalStacked",
-        "id": "bar",
-        "label": "Bar",
+        "id": undefined,
+        "label": "Horizontal Bar",
         "labelAngle": 0,
         "legendPosition": "v",
         "lineWidth": 1,
         "mode": "group",
-        "name": "bar",
-        "orientation": "v",
+        "name": undefined,
+        "orientation": "h",
         "selection": Object {
           "dataLoss": "nothing",
         },
