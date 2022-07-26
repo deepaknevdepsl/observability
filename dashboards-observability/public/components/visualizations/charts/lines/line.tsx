@@ -24,7 +24,7 @@ export const Line = ({ visualizations, layout, config }: any) => {
     layoutConfig = {},
     availabilityConfig = {},
   } = visualizations?.data?.userConfigs;
-  let visType:string = visualizations.data?.rawVizData?.scatter ? visChartTypes.Scatter : visChartTypes.Line;
+  let visType:string = visualizations.vis.name;
   const dataConfigTab = visualizations.data?.rawVizData?.[visType]?.dataConfig && visualizations.data.rawVizData[visType].dataConfig;
   const xaxis = dataConfigTab?.dimensions ? dataConfigTab?.dimensions.filter((item)  => item.label) : [];
   const yaxis = dataConfigTab?.metrics ? dataConfigTab?.metrics.filter((item)  => item.label) : [];
