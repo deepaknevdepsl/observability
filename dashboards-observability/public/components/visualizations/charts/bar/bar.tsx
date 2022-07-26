@@ -26,7 +26,7 @@ export const Bar = ({ visualizations, layout, config }: any) => {
     layoutConfig = {},
     availabilityConfig = {},
   } = visualizations?.data?.userConfigs;
-  let visType:string = visualizations.data?.rawVizData?.horizontal_bar ? visChartTypes.HorizontalBar : visChartTypes.Bar;
+  let visType:string = visualizations.vis.name;
   const dataConfigTab =
     visualizations.data?.rawVizData?.[visType]?.dataConfig &&
     visualizations.data.rawVizData[visType].dataConfig;
