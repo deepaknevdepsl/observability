@@ -25,11 +25,11 @@ const VIS_CATEGORY = getPlotlyCategory();
 
 const { LegendPosition, ShowLegend } = DefaultChartStyles;
 export const createBarTypeDefinition = (params: any) => ({
-  name: params.type,
+  name: params.type ? params.type : 'bar',
   type: 'bar',
-  id: params.type,
-  label: params.type === visChartTypes.Bar ? 'Bar' : 'Horizontal Bar' ,
-  fullLabel: params.type === visChartTypes.Bar ? 'Bar' : 'Horizontal Bar',
+  id: params.type ? params.type : 'bar',
+  label: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Bar',
+  fullLabel: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Bar',
   iconType: 'visBarVerticalStacked',
   selection: {
     dataLoss: 'nothing',
@@ -38,7 +38,7 @@ export const createBarTypeDefinition = (params: any) => ({
   icon: LensIconChartBar,
   categoryAxis: 'xaxis',
   seriesAxis: 'yaxis',
-  orientation: params.type === visChartTypes.Bar ? 'v' : 'h',
+  orientation: params.type === visChartTypes.HorizontalBar ? 'h' : 'v',
   mode: 'group',
   labelAngle: 0,
   lineWidth: 1,
@@ -104,7 +104,7 @@ export const createBarTypeDefinition = (params: any) => ({
                     { name: 'Vertical', id: 'v' },
                     { name: 'Horizontal', id: 'h' },
                   ],
-                  defaultSelections: [params.type === visChartTypes.Bar ? { name: 'Vertical', id: 'v' } : { name: 'Horizontal', id: 'h' } ],
+                  defaultSelections: [params.type === visChartTypes.HorizontalBar ? { name: 'Horizontal', id: 'h' } : { name: 'Vertical', id: 'v' } ],
                 },
               },
               {

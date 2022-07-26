@@ -281,8 +281,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                       "props": Object {
                         "defaultSelections": Array [
                           Object {
-                            "id": "h",
-                            "name": "Horizontal",
+                            "id": "v",
+                            "name": "Vertical",
                           },
                         ],
                         "options": Array [
@@ -430,18 +430,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
           ],
         },
         "fillOpacity": 80,
-        "fullLabel": "Horizontal Bar",
+        "fullLabel": "Bar",
         "groupWidth": 0.7,
         "icon": [Function],
         "iconType": "visBarVerticalStacked",
-        "id": undefined,
-        "label": "Horizontal Bar",
+        "id": "bar",
+        "label": "Bar",
         "labelAngle": 0,
         "legendPosition": "v",
         "lineWidth": 1,
         "mode": "group",
-        "name": undefined,
-        "orientation": "h",
+        "name": "bar",
+        "orientation": "v",
         "selection": Object {
           "dataLoss": "nothing",
         },
@@ -4714,8 +4714,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                   "props": Object {
                                     "defaultSelections": Array [
                                       Object {
-                                        "id": "h",
-                                        "name": "Horizontal",
+                                        "id": "v",
+                                        "name": "Vertical",
                                       },
                                     ],
                                     "options": Array [
@@ -5111,8 +5111,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                           "props": Object {
                                             "defaultSelections": Array [
                                               Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
+                                                "id": "v",
+                                                "name": "Vertical",
                                               },
                                             ],
                                             "options": Array [
@@ -5260,18 +5260,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                               ],
                             },
                             "fillOpacity": 80,
-                            "fullLabel": "Horizontal Bar",
+                            "fullLabel": "Bar",
                             "groupWidth": 0.7,
                             "icon": [Function],
                             "iconType": "visBarVerticalStacked",
-                            "id": undefined,
-                            "label": "Horizontal Bar",
+                            "id": "bar",
+                            "label": "Bar",
                             "labelAngle": 0,
                             "legendPosition": "v",
                             "lineWidth": 1,
                             "mode": "group",
-                            "name": undefined,
-                            "orientation": "h",
+                            "name": "bar",
+                            "orientation": "v",
                             "selection": Object {
                               "dataLoss": "nothing",
                             },
@@ -5394,8 +5394,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                     "props": Object {
                                       "defaultSelections": Array [
                                         Object {
-                                          "id": "h",
-                                          "name": "Horizontal",
+                                          "id": "v",
+                                          "name": "Vertical",
                                         },
                                       ],
                                       "options": Array [
@@ -5791,8 +5791,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             "props": Object {
                                               "defaultSelections": Array [
                                                 Object {
-                                                  "id": "h",
-                                                  "name": "Horizontal",
+                                                  "id": "v",
+                                                  "name": "Vertical",
                                                 },
                                               ],
                                               "options": Array [
@@ -5940,18 +5940,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                 ],
                               },
                               "fillOpacity": 80,
-                              "fullLabel": "Horizontal Bar",
+                              "fullLabel": "Bar",
                               "groupWidth": 0.7,
                               "icon": [Function],
                               "iconType": "visBarVerticalStacked",
-                              "id": undefined,
-                              "label": "Horizontal Bar",
+                              "id": "bar",
+                              "label": "Bar",
                               "labelAngle": 0,
                               "legendPosition": "v",
                               "lineWidth": 1,
                               "mode": "group",
-                              "name": undefined,
-                              "orientation": "h",
+                              "name": "bar",
+                              "orientation": "v",
                               "selection": Object {
                                 "dataLoss": "nothing",
                               },
@@ -6285,8 +6285,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             "props": Object {
                                               "defaultSelections": Array [
                                                 Object {
-                                                  "id": "h",
-                                                  "name": "Horizontal",
+                                                  "id": "v",
+                                                  "name": "Vertical",
                                                 },
                                               ],
                                               "options": Array [
@@ -6434,18 +6434,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                 ],
                               },
                               "fillOpacity": 80,
-                              "fullLabel": "Horizontal Bar",
+                              "fullLabel": "Bar",
                               "groupWidth": 0.7,
                               "icon": [Function],
                               "iconType": "visBarVerticalStacked",
-                              "id": undefined,
-                              "label": "Horizontal Bar",
+                              "id": "bar",
+                              "label": "Bar",
                               "labelAngle": 0,
                               "legendPosition": "v",
                               "lineWidth": 1,
                               "mode": "group",
-                              "name": undefined,
-                              "orientation": "h",
+                              "name": "bar",
+                              "orientation": "v",
                               "selection": Object {
                                 "dataLoss": "nothing",
                               },
@@ -6652,8 +6652,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                   "props": Object {
                                     "defaultSelections": Array [
                                       Object {
-                                        "id": "h",
-                                        "name": "Horizontal",
+                                        "id": "v",
+                                        "name": "Vertical",
                                       },
                                     ],
                                     "options": Array [
@@ -7049,8 +7049,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                           "props": Object {
                                             "defaultSelections": Array [
                                               Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
+                                                "id": "v",
+                                                "name": "Vertical",
                                               },
                                             ],
                                             "options": Array [
@@ -7198,18 +7198,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                               ],
                             },
                             "fillOpacity": 80,
-                            "fullLabel": "Horizontal Bar",
+                            "fullLabel": "Bar",
                             "groupWidth": 0.7,
                             "icon": [Function],
                             "iconType": "visBarVerticalStacked",
-                            "id": undefined,
-                            "label": "Horizontal Bar",
+                            "id": "bar",
+                            "label": "Bar",
                             "labelAngle": 0,
                             "legendPosition": "v",
                             "lineWidth": 1,
                             "mode": "group",
-                            "name": undefined,
-                            "orientation": "h",
+                            "name": "bar",
+                            "orientation": "v",
                             "selection": Object {
                               "dataLoss": "nothing",
                             },
@@ -7539,8 +7539,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                         "props": Object {
                                                           "defaultSelections": Array [
                                                             Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
+                                                              "id": "v",
+                                                              "name": "Vertical",
                                                             },
                                                           ],
                                                           "options": Array [
@@ -7688,18 +7688,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             ],
                                           },
                                           "fillOpacity": 80,
-                                          "fullLabel": "Horizontal Bar",
+                                          "fullLabel": "Bar",
                                           "groupWidth": 0.7,
                                           "icon": [Function],
                                           "iconType": "visBarVerticalStacked",
-                                          "id": undefined,
-                                          "label": "Horizontal Bar",
+                                          "id": "bar",
+                                          "label": "Bar",
                                           "labelAngle": 0,
                                           "legendPosition": "v",
                                           "lineWidth": 1,
                                           "mode": "group",
-                                          "name": undefined,
-                                          "orientation": "h",
+                                          "name": "bar",
+                                          "orientation": "v",
                                           "selection": Object {
                                             "dataLoss": "nothing",
                                           },
@@ -8308,8 +8308,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                         "props": Object {
                                                           "defaultSelections": Array [
                                                             Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
+                                                              "id": "v",
+                                                              "name": "Vertical",
                                                             },
                                                           ],
                                                           "options": Array [
@@ -8457,18 +8457,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             ],
                                           },
                                           "fillOpacity": 80,
-                                          "fullLabel": "Horizontal Bar",
+                                          "fullLabel": "Bar",
                                           "groupWidth": 0.7,
                                           "icon": [Function],
                                           "iconType": "visBarVerticalStacked",
-                                          "id": undefined,
-                                          "label": "Horizontal Bar",
+                                          "id": "bar",
+                                          "label": "Bar",
                                           "labelAngle": 0,
                                           "legendPosition": "v",
                                           "lineWidth": 1,
                                           "mode": "group",
-                                          "name": undefined,
-                                          "orientation": "h",
+                                          "name": "bar",
+                                          "orientation": "v",
                                           "selection": Object {
                                             "dataLoss": "nothing",
                                           },
@@ -9166,8 +9166,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                           "props": Object {
                                             "defaultSelections": Array [
                                               Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
+                                                "id": "v",
+                                                "name": "Vertical",
                                               },
                                             ],
                                             "options": Array [
@@ -9555,8 +9555,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                         "props": Object {
                                                           "defaultSelections": Array [
                                                             Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
+                                                              "id": "v",
+                                                              "name": "Vertical",
                                                             },
                                                           ],
                                                           "options": Array [
@@ -9704,18 +9704,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             ],
                                           },
                                           "fillOpacity": 80,
-                                          "fullLabel": "Horizontal Bar",
+                                          "fullLabel": "Bar",
                                           "groupWidth": 0.7,
                                           "icon": [Function],
                                           "iconType": "visBarVerticalStacked",
-                                          "id": undefined,
-                                          "label": "Horizontal Bar",
+                                          "id": "bar",
+                                          "label": "Bar",
                                           "labelAngle": 0,
                                           "legendPosition": "v",
                                           "lineWidth": 1,
                                           "mode": "group",
-                                          "name": undefined,
-                                          "orientation": "h",
+                                          "name": "bar",
+                                          "orientation": "v",
                                           "selection": Object {
                                             "dataLoss": "nothing",
                                           },
@@ -9826,8 +9826,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                   defaultSelections={
                                                     Array [
                                                       Object {
-                                                        "id": "h",
-                                                        "name": "Horizontal",
+                                                        "id": "v",
+                                                        "name": "Vertical",
                                                       },
                                                     ]
                                                   }
@@ -9846,7 +9846,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                     ]
                                                   }
                                                   handleButtonChange={[Function]}
-                                                  idSelected="h"
+                                                  idSelected="v"
                                                   key="viz-series-0"
                                                   legend="Orientation"
                                                   options={
@@ -9890,7 +9890,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                     <EuiButtonGroup
                                                       buttonSize="compressed"
                                                       id="random_html_id"
-                                                      idSelected="h"
+                                                      idSelected="v"
                                                       isFullWidth={false}
                                                       legend="Orientation"
                                                       name="Orientation"
@@ -9931,7 +9931,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                             id="v"
                                                             isDisabled={false}
                                                             isIconOnly={false}
-                                                            isSelected={false}
+                                                            isSelected={true}
                                                             key="0"
                                                             label="Vertical"
                                                             name="Vertical"
@@ -9940,7 +9940,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                           >
                                                             <EuiButtonDisplay
                                                               baseClassName="euiButtonGroupButton"
-                                                              className=""
+                                                              className="euiButtonGroupButton-isSelected"
                                                               color="text"
                                                               element="label"
                                                               fill={false}
@@ -9958,7 +9958,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                               }
                                                             >
                                                               <label
-                                                                className="euiButtonGroupButton euiButtonGroupButton--text euiButtonGroupButton--small"
+                                                                className="euiButtonGroupButton euiButtonGroupButton--text euiButtonGroupButton--small euiButtonGroupButton-isSelected"
                                                                 disabled={false}
                                                                 htmlFor="random_html_id"
                                                                 onClick={[Function]}
@@ -9989,7 +9989,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                                       title="Vertical"
                                                                     >
                                                                       <input
-                                                                        checked={false}
+                                                                        checked={true}
                                                                         className="euiScreenReaderOnly"
                                                                         data-test-subj="v"
                                                                         disabled={false}
@@ -10011,7 +10011,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                             id="h"
                                                             isDisabled={false}
                                                             isIconOnly={false}
-                                                            isSelected={true}
+                                                            isSelected={false}
                                                             key="1"
                                                             label="Horizontal"
                                                             name="Horizontal"
@@ -10020,7 +10020,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                           >
                                                             <EuiButtonDisplay
                                                               baseClassName="euiButtonGroupButton"
-                                                              className="euiButtonGroupButton-isSelected"
+                                                              className=""
                                                               color="text"
                                                               element="label"
                                                               fill={false}
@@ -10038,7 +10038,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                               }
                                                             >
                                                               <label
-                                                                className="euiButtonGroupButton euiButtonGroupButton--text euiButtonGroupButton--small euiButtonGroupButton-isSelected"
+                                                                className="euiButtonGroupButton euiButtonGroupButton--text euiButtonGroupButton--small"
                                                                 disabled={false}
                                                                 htmlFor="random_html_id"
                                                                 onClick={[Function]}
@@ -10069,7 +10069,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                                       title="Horizontal"
                                                                     >
                                                                       <input
-                                                                        checked={true}
+                                                                        checked={false}
                                                                         className="euiScreenReaderOnly"
                                                                         data-test-subj="h"
                                                                         disabled={false}
@@ -12423,8 +12423,8 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                         "props": Object {
                                                           "defaultSelections": Array [
                                                             Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
+                                                              "id": "v",
+                                                              "name": "Vertical",
                                                             },
                                                           ],
                                                           "options": Array [
@@ -12572,18 +12572,18 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             ],
                                           },
                                           "fillOpacity": 80,
-                                          "fullLabel": "Horizontal Bar",
+                                          "fullLabel": "Bar",
                                           "groupWidth": 0.7,
                                           "icon": [Function],
                                           "iconType": "visBarVerticalStacked",
-                                          "id": undefined,
-                                          "label": "Horizontal Bar",
+                                          "id": "bar",
+                                          "label": "Bar",
                                           "labelAngle": 0,
                                           "legendPosition": "v",
                                           "lineWidth": 1,
                                           "mode": "group",
-                                          "name": undefined,
-                                          "orientation": "h",
+                                          "name": "bar",
+                                          "orientation": "v",
                                           "selection": Object {
                                             "dataLoss": "nothing",
                                           },
