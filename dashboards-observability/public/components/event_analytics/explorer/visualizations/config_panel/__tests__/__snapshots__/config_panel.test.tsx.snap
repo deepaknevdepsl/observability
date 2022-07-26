@@ -2731,7 +2731,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                         "#BD6F26",
                         "#4C636F",
                       ],
-                      "height": 500,
+                      "height": 1180,
                       "legend": Object {
                         "orientation": "v",
                         "traceorder": "normal",
