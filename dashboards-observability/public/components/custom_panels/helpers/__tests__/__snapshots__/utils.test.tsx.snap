@@ -1320,10 +1320,6 @@ exports[`Utils helper functions renders displayVisualization function 2`] = `
                               "name": "Lines",
                             },
                             Object {
-                              "id": "markers",
-                              "name": "Marker",
-                            },
-                            Object {
                               "id": "lines+markers",
                               "name": "Lines + Markers",
                             },
@@ -1701,10 +1697,6 @@ exports[`Utils helper functions renders displayVisualization function 2`] = `
                               Object {
                                 "id": "lines",
                                 "name": "Lines",
-                              },
-                              Object {
-                                "id": "markers",
-                                "name": "Marker",
                               },
                               Object {
                                 "id": "lines+markers",
@@ -2138,10 +2130,6 @@ exports[`Utils helper functions renders displayVisualization function 2`] = `
                                 Object {
                                   "id": "lines",
                                   "name": "Lines",
-                                },
-                                Object {
-                                  "id": "markers",
-                                  "name": "Marker",
                                 },
                                 Object {
                                   "id": "lines+markers",

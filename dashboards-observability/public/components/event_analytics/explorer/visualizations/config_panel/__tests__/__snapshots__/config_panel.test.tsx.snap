@@ -875,10 +875,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                       "name": "Lines",
                                     },
                                     Object {
-                                      "id": "markers",
-                                      "name": "Marker",
-                                    },
-                                    Object {
                                       "id": "lines+markers",
                                       "name": "Lines + Markers",
                                     },
@@ -2543,10 +2539,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                     },
                                   ],
                                   "options": Array [
-                                    Object {
-                                      "id": "lines",
-                                      "name": "Lines",
-                                    },
                                     Object {
                                       "id": "markers",
                                       "name": "Marker",
