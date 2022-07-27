@@ -44,10 +44,10 @@ export const getVizContainerProps = ({
   userConfigs = {},
   appData = {},
 }: IVizContainerProps): IVisualizationContainerProps => {
-  
+
   const getVisTypeData = () => {
     if (vizId === visChartTypes.Bar || vizId === visChartTypes.HorizontalBar) {
-      return vizId === visChartTypes.Bar ? { ...getVisType(vizId, { type: visChartTypes.Bar }) } : { ...getVisType(vizId, { type: visChartTypes.HorizontalBar }) };    
+      return vizId === visChartTypes.Bar ? { ...getVisType(vizId, { type: visChartTypes.Bar }) } : { ...getVisType(vizId, { type: visChartTypes.HorizontalBar }) };
     } else {
       return { ...getVisType(vizId) }
     }

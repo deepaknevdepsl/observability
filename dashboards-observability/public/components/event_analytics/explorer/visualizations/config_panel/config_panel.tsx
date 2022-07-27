@@ -61,7 +61,7 @@ interface PanelTabType {
   content?: any;
 }
 
-export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsValidConfigOptionState  }: any) => {
+export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsValidConfigOptionState }: any) => {
   const { tabId, curVisId, dispatch, changeVisualizationConfig, setToast } = useContext<any>(
     TabContext
   );
@@ -74,7 +74,7 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     if (curVisId === visChartTypes.TreeMap) {
       chartBasedAxes["childField"] = data.defaultAxes.xaxis ?? [];
       chartBasedAxes["valueField"] = valueField && [valueField];
-    } else if(curVisId === visChartTypes.HeatMap){
+    } else if (curVisId === visChartTypes.HeatMap) {
       chartBasedAxes["zaxis"] = valueField && [valueField];
     } else {
       chartBasedAxes = { ...data.defaultAxes };
@@ -112,8 +112,8 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     []
   );
 
-   // To check, If user empty any of the value options
-   const isValidValueOptionConfigSelected = useMemo(() => {
+  // To check, If user empty any of the value options
+  const isValidValueOptionConfigSelected = useMemo(() => {
     const valueOptions = vizConfigs.dataConfig?.valueOptions;
     const { TreeMap, Gauge, HeatMap } = visChartTypes;
     const isValidValueOptionsXYAxes = VIZ_CONTAIN_XY_AXIS.includes(curVisId) &&

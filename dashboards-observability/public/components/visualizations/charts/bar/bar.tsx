@@ -26,7 +26,7 @@ export const Bar = ({ visualizations, layout, config }: any) => {
     layoutConfig = {},
     availabilityConfig = {},
   } = visualizations?.data?.userConfigs;
-  let visType:string = visualizations.vis.name;
+  let visType: string = visualizations.vis.name;
   const dataConfigTab =
     visualizations.data?.rawVizData?.[visType]?.dataConfig &&
     visualizations.data.rawVizData[visType].dataConfig;
@@ -84,14 +84,14 @@ export const Bar = ({ visualizations, layout, config }: any) => {
     const nameData =
       valueForXSeries.length > 1
         ? (valueForXSeries
-              .filter((item) => item.type !== 'timestamp')
-              .map((dimension) => data[dimension.label])
-          ).reduce((prev, cur) => {
-            return prev.map((i, j) => `${i}, ${cur[j]}`);
-          })
+          .filter((item) => item.type !== 'timestamp')
+          .map((dimension) => data[dimension.label])
+        ).reduce((prev, cur) => {
+          return prev.map((i, j) => `${i}, ${cur[j]}`);
+        })
         : [];
 
-    let dimensionsData = 
+    let dimensionsData =
       valueForXSeries
         .filter((item) => item.type === 'timestamp')
         .map((dimension) => data[dimension.label]).flat();

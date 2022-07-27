@@ -139,7 +139,7 @@ export interface DefaultGaugeChartParametersProps {
   GaugeTitleSize: number,
   DisplayDefaultGauges: number,
   OrientationDefault: string,
-  TickLength: number, 
+  TickLength: number,
   LegendPlacement: string,
   ThresholdsMaxLimit: number
 };
