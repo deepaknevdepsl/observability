@@ -8,7 +8,6 @@ import { getPlotlySharedConfigs, getPlotlyCategory } from '../shared/shared_conf
 import { LensIconChartBar } from '../../assets/chart_bar';
 import { VizDataPanel } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/default_vis_editor';
 import { ConfigEditor } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/json_editor';
-import { ConfigValueOptions } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls';
 import { ConfigAvailability } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
 import { ButtonGroupItem } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_button_group';
 import { ConfigBarChartStyles } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_bar_chart_styles';
@@ -94,19 +93,6 @@ export const createBarTypeDefinition = (params: any) => ({
             editor: ConfigBarChartStyles,
             mapTo: 'chartStyles',
             schemas: [
-              {
-                name: 'Orientation',
-                component: ButtonGroupItem,
-                mapTo: 'orientation',
-                eleType: 'buttons',
-                props: {
-                  options: [
-                    { name: 'Vertical', id: 'v' },
-                    { name: 'Horizontal', id: 'h' },
-                  ],
-                  defaultSelections: [params.type === visChartTypes.HorizontalBar ? { name: 'Horizontal', id: 'h' } : { name: 'Vertical', id: 'v' } ],
-                },
-              },
               {
                 name: 'Mode',
                 component: ButtonGroupItem,

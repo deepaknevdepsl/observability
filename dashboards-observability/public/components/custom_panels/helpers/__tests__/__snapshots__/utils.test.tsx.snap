@@ -151,30 +151,6 @@ exports[`Utils helper functions renders displayVisualization function 1`] = `
                       Object {
                         "component": [Function],
                         "eleType": "buttons",
-                        "mapTo": "orientation",
-                        "name": "Orientation",
-                        "props": Object {
-                          "defaultSelections": Array [
-                            Object {
-                              "id": "v",
-                              "name": "Vertical",
-                            },
-                          ],
-                          "options": Array [
-                            Object {
-                              "id": "v",
-                              "name": "Vertical",
-                            },
-                            Object {
-                              "id": "h",
-                              "name": "Horizontal",
-                            },
-                          ],
-                        },
-                      },
-                      Object {
-                        "component": [Function],
-                        "eleType": "buttons",
                         "mapTo": "mode",
                         "name": "Mode",
                         "props": Object {
@@ -495,30 +471,6 @@ exports[`Utils helper functions renders displayVisualization function 1`] = `
                       "mapTo": "chartStyles",
                       "name": "Chart styles",
                       "schemas": Array [
-                        Object {
-                          "component": [Function],
-                          "eleType": "buttons",
-                          "mapTo": "orientation",
-                          "name": "Orientation",
-                          "props": Object {
-                            "defaultSelections": Array [
-                              Object {
-                                "id": "v",
-                                "name": "Vertical",
-                              },
-                            ],
-                            "options": Array [
-                              Object {
-                                "id": "v",
-                                "name": "Vertical",
-                              },
-                              Object {
-                                "id": "h",
-                                "name": "Horizontal",
-                              },
-                            ],
-                          },
-                        },
                         Object {
                           "component": [Function],
                           "eleType": "buttons",
@@ -865,30 +817,6 @@ exports[`Utils helper functions renders displayVisualization function 1`] = `
                         "mapTo": "chartStyles",
                         "name": "Chart styles",
                         "schemas": Array [
-                          Object {
-                            "component": [Function],
-                            "eleType": "buttons",
-                            "mapTo": "orientation",
-                            "name": "Orientation",
-                            "props": Object {
-                              "defaultSelections": Array [
-                                Object {
-                                  "id": "v",
-                                  "name": "Vertical",
-                                },
-                              ],
-                              "options": Array [
-                                Object {
-                                  "id": "v",
-                                  "name": "Vertical",
-                                },
-                                Object {
-                                  "id": "h",
-                                  "name": "Horizontal",
-                                },
-                              ],
-                            },
-                          },
                           Object {
                             "component": [Function],
                             "eleType": "buttons",
@@ -2588,30 +2516,6 @@ exports[`Utils helper functions renders displayVisualization function 3`] = `
                       Object {
                         "component": [Function],
                         "eleType": "buttons",
-                        "mapTo": "orientation",
-                        "name": "Orientation",
-                        "props": Object {
-                          "defaultSelections": Array [
-                            Object {
-                              "id": "h",
-                              "name": "Horizontal",
-                            },
-                          ],
-                          "options": Array [
-                            Object {
-                              "id": "v",
-                              "name": "Vertical",
-                            },
-                            Object {
-                              "id": "h",
-                              "name": "Horizontal",
-                            },
-                          ],
-                        },
-                      },
-                      Object {
-                        "component": [Function],
-                        "eleType": "buttons",
                         "mapTo": "mode",
                         "name": "Mode",
                         "props": Object {
@@ -2932,30 +2836,6 @@ exports[`Utils helper functions renders displayVisualization function 3`] = `
                       "mapTo": "chartStyles",
                       "name": "Chart styles",
                       "schemas": Array [
-                        Object {
-                          "component": [Function],
-                          "eleType": "buttons",
-                          "mapTo": "orientation",
-                          "name": "Orientation",
-                          "props": Object {
-                            "defaultSelections": Array [
-                              Object {
-                                "id": "h",
-                                "name": "Horizontal",
-                              },
-                            ],
-                            "options": Array [
-                              Object {
-                                "id": "v",
-                                "name": "Vertical",
-                              },
-                              Object {
-                                "id": "h",
-                                "name": "Horizontal",
-                              },
-                            ],
-                          },
-                        },
                         Object {
                           "component": [Function],
                           "eleType": "buttons",
@@ -3302,30 +3182,6 @@ exports[`Utils helper functions renders displayVisualization function 3`] = `
                         "mapTo": "chartStyles",
                         "name": "Chart styles",
                         "schemas": Array [
-                          Object {
-                            "component": [Function],
-                            "eleType": "buttons",
-                            "mapTo": "orientation",
-                            "name": "Orientation",
-                            "props": Object {
-                              "defaultSelections": Array [
-                                Object {
-                                  "id": "h",
-                                  "name": "Horizontal",
-                                },
-                              ],
-                              "options": Array [
-                                Object {
-                                  "id": "v",
-                                  "name": "Vertical",
-                                },
-                                Object {
-                                  "id": "h",
-                                  "name": "Horizontal",
-                                },
-                              ],
-                            },
-                          },
                           Object {
                             "component": [Function],
                             "eleType": "buttons",
@@ -3710,30 +3566,6 @@ exports[`Utils helper functions renders displayVisualization function 4`] = `
                       Object {
                         "component": [Function],
                         "eleType": "buttons",
-                        "mapTo": "orientation",
-                        "name": "Orientation",
-                        "props": Object {
-                          "defaultSelections": Array [
-                            Object {
-                              "id": "h",
-                              "name": "Horizontal",
-                            },
-                          ],
-                          "options": Array [
-                            Object {
-                              "id": "v",
-                              "name": "Vertical",
-                            },
-                            Object {
-                              "id": "h",
-                              "name": "Horizontal",
-                            },
-                          ],
-                        },
-                      },
-                      Object {
-                        "component": [Function],
-                        "eleType": "buttons",
                         "mapTo": "mode",
                         "name": "Mode",
                         "props": Object {
@@ -4027,30 +3859,6 @@ exports[`Utils helper functions renders displayVisualization function 4`] = `
                       "mapTo": "chartStyles",
                       "name": "Chart styles",
                       "schemas": Array [
-                        Object {
-                          "component": [Function],
-                          "eleType": "buttons",
-                          "mapTo": "orientation",
-                          "name": "Orientation",
-                          "props": Object {
-                            "defaultSelections": Array [
-                              Object {
-                                "id": "h",
-                                "name": "Horizontal",
-                              },
-                            ],
-                            "options": Array [
-                              Object {
-                                "id": "v",
-                                "name": "Vertical",
-                              },
-                              Object {
-                                "id": "h",
-                                "name": "Horizontal",
-                              },
-                            ],
-                          },
-                        },
                         Object {
                           "component": [Function],
                           "eleType": "buttons",
@@ -4370,30 +4178,6 @@ exports[`Utils helper functions renders displayVisualization function 4`] = `
                         "mapTo": "chartStyles",
                         "name": "Chart styles",
                         "schemas": Array [
-                          Object {
-                            "component": [Function],
-                            "eleType": "buttons",
-                            "mapTo": "orientation",
-                            "name": "Orientation",
-                            "props": Object {
-                              "defaultSelections": Array [
-                                Object {
-                                  "id": "h",
-                                  "name": "Horizontal",
-                                },
-                              ],
-                              "options": Array [
-                                Object {
-                                  "id": "v",
-                                  "name": "Vertical",
-                                },
-                                Object {
-                                  "id": "h",
-                                  "name": "Horizontal",
-                                },
-                              ],
-                            },
-                          },
                           Object {
                             "component": [Function],
                             "eleType": "buttons",
