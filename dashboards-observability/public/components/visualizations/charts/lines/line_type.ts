@@ -97,8 +97,7 @@ export const createLineTypeDefinition = (params: any = {}) => ({
                 eleType: 'buttons',
                 props: {
                   options: [
-                    { name: 'Lines', id: 'lines' },
-                    { name: 'Marker', id: 'markers' },
+                    params.type === visChartTypes.Line ? { name: 'Lines', id: DefaultModeLine } : { name: 'Marker', id: DefaultModeScatter },
                     { name: 'Lines + Markers', id: 'lines+markers' },
                   ],
                   defaultSelections: [params.type === visChartTypes.Line ? { name: 'Lines', id: DefaultModeLine } : { name: 'Marker', id: DefaultModeScatter } ],
