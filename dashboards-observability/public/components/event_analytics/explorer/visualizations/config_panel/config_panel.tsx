@@ -24,9 +24,9 @@ import { reset as resetVisualizationConfig } from '../../../redux/slices/viualiz
 import { getDefaultSpec } from '../visualization_specs/default_spec';
 import { TabContext } from '../../../hooks';
 import { DefaultEditorControls } from './config_panel_footer';
-import { getVisType } from '../../../../visualizations/charts/vis_types';
 import { ENABLED_VIS_TYPES, ValueOptionsAxes, visChartTypes } from '../../../../../../common/constants/shared';
 import { VIZ_CONTAIN_XY_AXIS } from '../../../../../../common/constants/explorer';
+import { getVisTypeData } from '../../../../custom_panels/helpers/utils';
 
 const CONFIG_LAYOUT_TEMPLATE = `
 {
@@ -222,20 +222,10 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     );
   };
 
-  const isLineOrScatter = (vs: string) => (vs === visChartTypes.Line || vs === visChartTypes.Scatter);
-  const isVerticalorHorizontalBar = (vs: string) => (vs === visChartTypes.Bar || vs === visChartTypes.HorizontalBar);
-
   const memorizedVisualizationTypes = useMemo(() => {
     let visDefinition = {}
     return ENABLED_VIS_TYPES.map((vs: string) => {
-      if (isLineOrScatter(vs)) {
-        visDefinition = vs === visChartTypes.Line ? getVisType(vs, { type: visChartTypes.Line }) : getVisType(vs, { type: visChartTypes.Scatter });
-      } else if (isVerticalorHorizontalBar(vs)) {
-        visDefinition = vs === visChartTypes.Bar ? getVisType(vs, { type: visChartTypes.Bar }) : getVisType(vs, { type: visChartTypes.HorizontalBar });
-      } else {
-        visDefinition = getVisType(vs);
-      }
-
+      visDefinition = getVisTypeData(vs);
       return {
         ...visDefinition,
       };

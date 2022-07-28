@@ -4,9 +4,9 @@
  */
 
 import { isEmpty, take } from 'lodash';
-import { getVisType } from '../vis_types';
 import { IVisualizationContainerProps, IField, IQuery } from '../../../../../common/types/explorer';
 import { visChartTypes } from '../../../../../common/constants/shared';
+import { getVisTypeData } from '../../../custom_panels/helpers/utils';
 
 interface IVizContainerProps {
   vizId: string;
@@ -44,19 +44,7 @@ export const getVizContainerProps = ({
   userConfigs = {},
   appData = {},
 }: IVizContainerProps): IVisualizationContainerProps => {
-  const isLineOrScatter = (vs: string) => (vs === visChartTypes.Line || vs === visChartTypes.Scatter);
-  const isVerticalorHorizontalBar = (vs: string) => (vs === visChartTypes.Bar || vs === visChartTypes.HorizontalBar);
-
-  const getVisTypeData = () => {
-    if (isLineOrScatter(vizId)) {
-      return vizId === visChartTypes.Line ? { ...getVisType(vizId, { type: visChartTypes.Line }) } : { ...getVisType(vizId, { type: visChartTypes.Scatter }) };
-    } else if (isVerticalorHorizontalBar(vizId)) {
-      return vizId === visChartTypes.Bar ? { ...getVisType(vizId, { type: visChartTypes.Bar }) } : { ...getVisType(vizId, { type: visChartTypes.HorizontalBar }) };
-    } else {
-      return { ...getVisType(vizId) }
-    }
-  }
-
+  
   return {
     data: {
       appData: { ...appData },
@@ -65,11 +53,11 @@ export const getVizContainerProps = ({
       indexFields: { ...indexFields },
       userConfigs: { ...userConfigs },
       defaultAxes: {
-        ...getDefaultXYAxisLabels(rawVizData?.metadata?.fields, getVisTypeData().name),
+        ...getDefaultXYAxisLabels(rawVizData?.metadata?.fields, getVisTypeData(vizId).name),
       },
     },
     vis: {
-      ...getVisTypeData()
+      ...getVisTypeData(vizId)
     },
   };
 };
