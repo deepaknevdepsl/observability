@@ -277,30 +277,6 @@ exports[`Bar component Renders bar component 1`] = `
                     Object {
                       "component": [Function],
                       "eleType": "buttons",
-                      "mapTo": "orientation",
-                      "name": "Orientation",
-                      "props": Object {
-                        "defaultSelections": Array [
-                          Object {
-                            "id": "v",
-                            "name": "Vertical",
-                          },
-                        ],
-                        "options": Array [
-                          Object {
-                            "id": "v",
-                            "name": "Vertical",
-                          },
-                          Object {
-                            "id": "h",
-                            "name": "Horizontal",
-                          },
-                        ],
-                      },
-                    },
-                    Object {
-                      "component": [Function],
-                      "eleType": "buttons",
                       "mapTo": "mode",
                       "name": "Mode",
                       "props": Object {

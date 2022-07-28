@@ -44,9 +44,14 @@ export const getVizContainerProps = ({
   userConfigs = {},
   appData = {},
 }: IVizContainerProps): IVisualizationContainerProps => {
+  const isLineOrScatter = (vs: string) => (vs === visChartTypes.Line || vs === visChartTypes.Scatter);
+  const isVerticalorHorizontalBar = (vs: string) => (vs === visChartTypes.Bar || vs === visChartTypes.HorizontalBar);
+
   const getVisTypeData = () => {
-    if (vizId === visChartTypes.Line || vizId === visChartTypes.Scatter) {
+    if (isLineOrScatter(vizId)) {
       return vizId === visChartTypes.Line ? { ...getVisType(vizId, { type: visChartTypes.Line }) } : { ...getVisType(vizId, { type: visChartTypes.Scatter }) };
+    } else if (isVerticalorHorizontalBar(vizId)) {
+      return vizId === visChartTypes.Bar ? { ...getVisType(vizId, { type: visChartTypes.Bar }) } : { ...getVisType(vizId, { type: visChartTypes.HorizontalBar }) };
     } else {
       return { ...getVisType(vizId) }
     }

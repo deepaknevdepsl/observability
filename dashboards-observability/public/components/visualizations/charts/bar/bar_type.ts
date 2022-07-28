@@ -17,7 +17,7 @@ import {
   ConfigLegend,
   InputFieldItem,
 } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls';
-import { DefaultChartStyles } from '../../../../../common/constants/shared';
+import { DefaultChartStyles, visChartTypes } from '../../../../../common/constants/shared';
 
 import { ConfigColorTheme } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_color_theme';
 const sharedConfigs = getPlotlySharedConfigs();
@@ -25,11 +25,11 @@ const VIS_CATEGORY = getPlotlyCategory();
 
 const { LegendPosition, ShowLegend } = DefaultChartStyles;
 export const createBarTypeDefinition = (params: any) => ({
-  name: 'bar',
+  name: params.type ? params.type : 'bar',
   type: 'bar',
-  id: 'bar',
-  label: 'Bar',
-  fullLabel: 'Bar',
+  id: params.type ? params.type : 'bar',
+  label: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Bar',
+  fullLabel: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Bar',
   iconType: 'visBarVerticalStacked',
   selection: {
     dataLoss: 'nothing',
@@ -38,7 +38,7 @@ export const createBarTypeDefinition = (params: any) => ({
   icon: LensIconChartBar,
   categoryAxis: 'xaxis',
   seriesAxis: 'yaxis',
-  orientation: 'v',
+  orientation: params.type === visChartTypes.HorizontalBar ? 'h' : 'v',
   mode: 'group',
   labelAngle: 0,
   lineWidth: 1,
@@ -94,19 +94,6 @@ export const createBarTypeDefinition = (params: any) => ({
             editor: ConfigBarChartStyles,
             mapTo: 'chartStyles',
             schemas: [
-              {
-                name: 'Orientation',
-                component: ButtonGroupItem,
-                mapTo: 'orientation',
-                eleType: 'buttons',
-                props: {
-                  options: [
-                    { name: 'Vertical', id: 'v' },
-                    { name: 'Horizontal', id: 'h' },
-                  ],
-                  defaultSelections: [{ name: 'Vertical', id: 'v' }],
-                },
-              },
               {
                 name: 'Mode',
                 component: ButtonGroupItem,

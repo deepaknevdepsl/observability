@@ -276,30 +276,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                     Object {
                       "component": [Function],
                       "eleType": "buttons",
-                      "mapTo": "orientation",
-                      "name": "Orientation",
-                      "props": Object {
-                        "defaultSelections": Array [
-                          Object {
-                            "id": "v",
-                            "name": "Vertical",
-                          },
-                        ],
-                        "options": Array [
-                          Object {
-                            "id": "v",
-                            "name": "Vertical",
-                          },
-                          Object {
-                            "id": "h",
-                            "name": "Horizontal",
-                          },
-                        ],
-                      },
-                    },
-                    Object {
-                      "component": [Function],
-                      "eleType": "buttons",
                       "mapTo": "mode",
                       "name": "Mode",
                       "props": Object {
@@ -583,30 +559,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                               Object {
                                 "component": [Function],
                                 "eleType": "buttons",
-                                "mapTo": "orientation",
-                                "name": "Orientation",
-                                "props": Object {
-                                  "defaultSelections": Array [
-                                    Object {
-                                      "id": "v",
-                                      "name": "Vertical",
-                                    },
-                                  ],
-                                  "options": Array [
-                                    Object {
-                                      "id": "v",
-                                      "name": "Vertical",
-                                    },
-                                    Object {
-                                      "id": "h",
-                                      "name": "Horizontal",
-                                    },
-                                  ],
-                                },
-                              },
-                              Object {
-                                "component": [Function],
-                                "eleType": "buttons",
                                 "mapTo": "mode",
                                 "name": "Mode",
                                 "props": Object {
@@ -749,6 +701,253 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                   "mode": "group",
                   "name": "bar",
                   "orientation": "v",
+                  "selection": Object {
+                    "dataLoss": "nothing",
+                  },
+                  "seriesAxis": "yaxis",
+                  "showLegend": "show",
+                  "type": "bar",
+                  "visConfig": Object {
+                    "config": Object {
+                      "displaylogo": false,
+                      "responsive": true,
+                    },
+                    "isUniColor": false,
+                    "layout": Object {
+                      "height": 1180,
+                      "legend": Object {
+                        "orientation": "v",
+                        "traceorder": "normal",
+                      },
+                      "margin": Object {
+                        "b": 30,
+                        "l": 60,
+                        "pad": 0,
+                        "r": 30,
+                        "t": 50,
+                      },
+                      "showlegend": true,
+                    },
+                  },
+                },
+                Object {
+                  "barWidth": 0.97,
+                  "category": "Visualizations",
+                  "categoryAxis": "xaxis",
+                  "component": [Function],
+                  "editorConfig": Object {
+                    "panelTabs": Array [
+                      Object {
+                        "editor": [Function],
+                        "id": "data-panel",
+                        "mapTo": "dataConfig",
+                        "name": "Data",
+                        "sections": Array [
+                          Object {
+                            "editor": [Function],
+                            "id": "legend",
+                            "mapTo": "legend",
+                            "name": "Legend",
+                            "schemas": Array [
+                              Object {
+                                "component": null,
+                                "mapTo": "showLegend",
+                                "name": "Show Legend",
+                                "props": Object {
+                                  "defaultSelections": Array [
+                                    Object {
+                                      "id": "show",
+                                      "name": "Show",
+                                    },
+                                  ],
+                                  "options": Array [
+                                    Object {
+                                      "id": "show",
+                                      "name": "Show",
+                                    },
+                                    Object {
+                                      "id": "hidden",
+                                      "name": "Hidden",
+                                    },
+                                  ],
+                                },
+                              },
+                              Object {
+                                "component": null,
+                                "mapTo": "position",
+                                "name": "Position",
+                                "props": Object {
+                                  "defaultSelections": Array [
+                                    Object {
+                                      "id": "v",
+                                      "name": "Right",
+                                    },
+                                  ],
+                                  "options": Array [
+                                    Object {
+                                      "id": "v",
+                                      "name": "Right",
+                                    },
+                                    Object {
+                                      "id": "h",
+                                      "name": "Bottom",
+                                    },
+                                  ],
+                                },
+                              },
+                            ],
+                          },
+                          Object {
+                            "editor": [Function],
+                            "id": "chart_styles",
+                            "mapTo": "chartStyles",
+                            "name": "Chart styles",
+                            "schemas": Array [
+                              Object {
+                                "component": [Function],
+                                "eleType": "buttons",
+                                "mapTo": "mode",
+                                "name": "Mode",
+                                "props": Object {
+                                  "defaultSelections": Array [
+                                    Object {
+                                      "id": "group",
+                                      "name": "Group",
+                                    },
+                                  ],
+                                  "options": Array [
+                                    Object {
+                                      "id": "group",
+                                      "name": "Group",
+                                    },
+                                    Object {
+                                      "id": "stack",
+                                      "name": "Stack",
+                                    },
+                                  ],
+                                },
+                              },
+                              Object {
+                                "component": [Function],
+                                "eleType": "input",
+                                "mapTo": "labelSize",
+                                "name": "Label Size",
+                              },
+                              Object {
+                                "component": [Function],
+                                "defaultState": 0,
+                                "eleType": "slider",
+                                "mapTo": "rotateBarLabels",
+                                "name": "Rotate bar labels",
+                                "props": Object {
+                                  "max": 90,
+                                  "min": -90,
+                                  "showTicks": true,
+                                  "ticks": Array [
+                                    Object {
+                                      "label": "-90°",
+                                      "value": -90,
+                                    },
+                                    Object {
+                                      "label": "-45°",
+                                      "value": -45,
+                                    },
+                                    Object {
+                                      "label": "0°",
+                                      "value": 0,
+                                    },
+                                    Object {
+                                      "label": "45°",
+                                      "value": 45,
+                                    },
+                                    Object {
+                                      "label": "90°",
+                                      "value": 90,
+                                    },
+                                  ],
+                                },
+                              },
+                              Object {
+                                "component": [Function],
+                                "defaultState": 0.7,
+                                "eleType": "slider",
+                                "mapTo": "groupWidth",
+                                "name": "Group width",
+                                "props": Object {
+                                  "max": 1,
+                                  "step": 0.01,
+                                },
+                              },
+                              Object {
+                                "component": [Function],
+                                "defaultState": 0.97,
+                                "eleType": "slider",
+                                "mapTo": "barWidth",
+                                "name": "Bar width",
+                                "props": Object {
+                                  "max": 1,
+                                  "step": 0.01,
+                                },
+                              },
+                              Object {
+                                "component": [Function],
+                                "defaultState": 1,
+                                "eleType": "slider",
+                                "mapTo": "lineWidth",
+                                "name": "Line width",
+                                "props": Object {
+                                  "max": 10,
+                                },
+                              },
+                              Object {
+                                "component": [Function],
+                                "defaultState": 80,
+                                "eleType": "slider",
+                                "mapTo": "fillOpacity",
+                                "name": "Fill Opacity",
+                                "props": Object {
+                                  "max": 100,
+                                },
+                              },
+                            ],
+                          },
+                          Object {
+                            "editor": [Function],
+                            "id": "color-theme",
+                            "mapTo": "colorTheme",
+                            "name": "Color Theme",
+                            "schemas": Array [],
+                          },
+                        ],
+                      },
+                      Object {
+                        "content": Array [],
+                        "editor": [Function],
+                        "id": "style-panel",
+                        "mapTo": "layoutConfig",
+                        "name": "Layout",
+                      },
+                      Object {
+                        "editor": [Function],
+                        "id": "availability-panel",
+                        "mapTo": "availabilityConfig",
+                        "name": "Availability",
+                      },
+                    ],
+                  },
+                  "fillOpacity": 80,
+                  "fullLabel": "Horizontal Bar",
+                  "groupWidth": 0.7,
+                  "icon": [Function],
+                  "iconType": "visBarVerticalStacked",
+                  "id": "horizontal_bar",
+                  "label": "Horizontal Bar",
+                  "labelAngle": 0,
+                  "legendPosition": "v",
+                  "lineWidth": 1,
+                  "mode": "group",
+                  "name": "horizontal_bar",
+                  "orientation": "h",
                   "selection": Object {
                     "dataLoss": "nothing",
                   },
@@ -2841,30 +3040,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                               Object {
                                 "component": [Function],
                                 "eleType": "buttons",
-                                "mapTo": "orientation",
-                                "name": "Orientation",
-                                "props": Object {
-                                  "defaultSelections": Array [
-                                    Object {
-                                      "id": "v",
-                                      "name": "Vertical",
-                                    },
-                                  ],
-                                  "options": Array [
-                                    Object {
-                                      "id": "v",
-                                      "name": "Vertical",
-                                    },
-                                    Object {
-                                      "id": "h",
-                                      "name": "Horizontal",
-                                    },
-                                  ],
-                                },
-                              },
-                              Object {
-                                "component": [Function],
-                                "eleType": "buttons",
                                 "mapTo": "mode",
                                 "name": "Mode",
                                 "props": Object {
@@ -3141,30 +3316,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                 "mapTo": "chartStyles",
                                 "name": "Chart styles",
                                 "schemas": Array [
-                                  Object {
-                                    "component": [Function],
-                                    "eleType": "buttons",
-                                    "mapTo": "orientation",
-                                    "name": "Orientation",
-                                    "props": Object {
-                                      "defaultSelections": Array [
-                                        Object {
-                                          "id": "v",
-                                          "name": "Vertical",
-                                        },
-                                      ],
-                                      "options": Array [
-                                        Object {
-                                          "id": "v",
-                                          "name": "Vertical",
-                                        },
-                                        Object {
-                                          "id": "h",
-                                          "name": "Horizontal",
-                                        },
-                                      ],
-                                    },
-                                  },
                                   Object {
                                     "component": [Function],
                                     "eleType": "buttons",
@@ -3452,30 +3603,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                         Object {
                                           "component": [Function],
                                           "eleType": "buttons",
-                                          "mapTo": "orientation",
-                                          "name": "Orientation",
-                                          "props": Object {
-                                            "defaultSelections": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                            ],
-                                            "options": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                              Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
-                                              },
-                                            ],
-                                          },
-                                        },
-                                        Object {
-                                          "component": [Function],
-                                          "eleType": "buttons",
                                           "mapTo": "mode",
                                           "name": "Mode",
                                           "props": Object {
@@ -3692,30 +3819,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                         "mapTo": "chartStyles",
                                         "name": "Chart styles",
                                         "schemas": Array [
-                                          Object {
-                                            "component": [Function],
-                                            "eleType": "buttons",
-                                            "mapTo": "orientation",
-                                            "name": "Orientation",
-                                            "props": Object {
-                                              "defaultSelections": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                              ],
-                                              "options": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                                Object {
-                                                  "id": "h",
-                                                  "name": "Horizontal",
-                                                },
-                                              ],
-                                            },
-                                          },
                                           Object {
                                             "component": [Function],
                                             "eleType": "buttons",
@@ -4004,30 +4107,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                           Object {
                                             "component": [Function],
                                             "eleType": "buttons",
-                                            "mapTo": "orientation",
-                                            "name": "Orientation",
-                                            "props": Object {
-                                              "defaultSelections": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                              ],
-                                              "options": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                                Object {
-                                                  "id": "h",
-                                                  "name": "Horizontal",
-                                                },
-                                              ],
-                                            },
-                                          },
-                                          Object {
-                                            "component": [Function],
-                                            "eleType": "buttons",
                                             "mapTo": "mode",
                                             "name": "Mode",
                                             "props": Object {
@@ -4280,30 +4359,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                             "mapTo": "chartStyles",
                                             "name": "Chart styles",
                                             "schemas": Array [
-                                              Object {
-                                                "component": [Function],
-                                                "eleType": "buttons",
-                                                "mapTo": "orientation",
-                                                "name": "Orientation",
-                                                "props": Object {
-                                                  "defaultSelections": Array [
-                                                    Object {
-                                                      "id": "v",
-                                                      "name": "Vertical",
-                                                    },
-                                                  ],
-                                                  "options": Array [
-                                                    Object {
-                                                      "id": "v",
-                                                      "name": "Vertical",
-                                                    },
-                                                    Object {
-                                                      "id": "h",
-                                                      "name": "Horizontal",
-                                                    },
-                                                  ],
-                                                },
-                                              },
                                               Object {
                                                 "component": [Function],
                                                 "eleType": "buttons",
@@ -4746,30 +4801,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                 Object {
                                   "component": [Function],
                                   "eleType": "buttons",
-                                  "mapTo": "orientation",
-                                  "name": "Orientation",
-                                  "props": Object {
-                                    "defaultSelections": Array [
-                                      Object {
-                                        "id": "v",
-                                        "name": "Vertical",
-                                      },
-                                    ],
-                                    "options": Array [
-                                      Object {
-                                        "id": "v",
-                                        "name": "Vertical",
-                                      },
-                                      Object {
-                                        "id": "h",
-                                        "name": "Horizontal",
-                                      },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "component": [Function],
-                                  "eleType": "buttons",
                                   "mapTo": "mode",
                                   "name": "Mode",
                                   "props": Object {
@@ -5143,30 +5174,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                         Object {
                                           "component": [Function],
                                           "eleType": "buttons",
-                                          "mapTo": "orientation",
-                                          "name": "Orientation",
-                                          "props": Object {
-                                            "defaultSelections": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                            ],
-                                            "options": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                              Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
-                                              },
-                                            ],
-                                          },
-                                        },
-                                        Object {
-                                          "component": [Function],
-                                          "eleType": "buttons",
                                           "mapTo": "mode",
                                           "name": "Mode",
                                           "props": Object {
@@ -5423,30 +5430,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                 "mapTo": "chartStyles",
                                 "name": "Chart styles",
                                 "schemas": Array [
-                                  Object {
-                                    "component": [Function],
-                                    "eleType": "buttons",
-                                    "mapTo": "orientation",
-                                    "name": "Orientation",
-                                    "props": Object {
-                                      "defaultSelections": Array [
-                                        Object {
-                                          "id": "v",
-                                          "name": "Vertical",
-                                        },
-                                      ],
-                                      "options": Array [
-                                        Object {
-                                          "id": "v",
-                                          "name": "Vertical",
-                                        },
-                                        Object {
-                                          "id": "h",
-                                          "name": "Horizontal",
-                                        },
-                                      ],
-                                    },
-                                  },
                                   Object {
                                     "component": [Function],
                                     "eleType": "buttons",
@@ -5820,30 +5803,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                         "mapTo": "chartStyles",
                                         "name": "Chart styles",
                                         "schemas": Array [
-                                          Object {
-                                            "component": [Function],
-                                            "eleType": "buttons",
-                                            "mapTo": "orientation",
-                                            "name": "Orientation",
-                                            "props": Object {
-                                              "defaultSelections": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                              ],
-                                              "options": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                                Object {
-                                                  "id": "h",
-                                                  "name": "Horizontal",
-                                                },
-                                              ],
-                                            },
-                                          },
                                           Object {
                                             "component": [Function],
                                             "eleType": "buttons",
@@ -6317,30 +6276,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                           Object {
                                             "component": [Function],
                                             "eleType": "buttons",
-                                            "mapTo": "orientation",
-                                            "name": "Orientation",
-                                            "props": Object {
-                                              "defaultSelections": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                              ],
-                                              "options": Array [
-                                                Object {
-                                                  "id": "v",
-                                                  "name": "Vertical",
-                                                },
-                                                Object {
-                                                  "id": "h",
-                                                  "name": "Horizontal",
-                                                },
-                                              ],
-                                            },
-                                          },
-                                          Object {
-                                            "component": [Function],
-                                            "eleType": "buttons",
                                             "mapTo": "mode",
                                             "name": "Mode",
                                             "props": Object {
@@ -6681,30 +6616,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                               "mapTo": "chartStyles",
                               "name": "Chart styles",
                               "schemas": Array [
-                                Object {
-                                  "component": [Function],
-                                  "eleType": "buttons",
-                                  "mapTo": "orientation",
-                                  "name": "Orientation",
-                                  "props": Object {
-                                    "defaultSelections": Array [
-                                      Object {
-                                        "id": "v",
-                                        "name": "Vertical",
-                                      },
-                                    ],
-                                    "options": Array [
-                                      Object {
-                                        "id": "v",
-                                        "name": "Vertical",
-                                      },
-                                      Object {
-                                        "id": "h",
-                                        "name": "Horizontal",
-                                      },
-                                    ],
-                                  },
-                                },
                                 Object {
                                   "component": [Function],
                                   "eleType": "buttons",
@@ -7078,30 +6989,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                       "mapTo": "chartStyles",
                                       "name": "Chart styles",
                                       "schemas": Array [
-                                        Object {
-                                          "component": [Function],
-                                          "eleType": "buttons",
-                                          "mapTo": "orientation",
-                                          "name": "Orientation",
-                                          "props": Object {
-                                            "defaultSelections": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                            ],
-                                            "options": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                              Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
-                                              },
-                                            ],
-                                          },
-                                        },
                                         Object {
                                           "component": [Function],
                                           "eleType": "buttons",
@@ -7568,30 +7455,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                     "mapTo": "chartStyles",
                                                     "name": "Chart styles",
                                                     "schemas": Array [
-                                                      Object {
-                                                        "component": [Function],
-                                                        "eleType": "buttons",
-                                                        "mapTo": "orientation",
-                                                        "name": "Orientation",
-                                                        "props": Object {
-                                                          "defaultSelections": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                          ],
-                                                          "options": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                            Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
-                                                            },
-                                                          ],
-                                                        },
-                                                      },
                                                       Object {
                                                         "component": [Function],
                                                         "eleType": "buttons",
@@ -8337,30 +8200,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                     "mapTo": "chartStyles",
                                                     "name": "Chart styles",
                                                     "schemas": Array [
-                                                      Object {
-                                                        "component": [Function],
-                                                        "eleType": "buttons",
-                                                        "mapTo": "orientation",
-                                                        "name": "Orientation",
-                                                        "props": Object {
-                                                          "defaultSelections": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                          ],
-                                                          "options": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                            Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
-                                                            },
-                                                          ],
-                                                        },
-                                                      },
                                                       Object {
                                                         "component": [Function],
                                                         "eleType": "buttons",
@@ -9198,30 +9037,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                         Object {
                                           "component": [Function],
                                           "eleType": "buttons",
-                                          "mapTo": "orientation",
-                                          "name": "Orientation",
-                                          "props": Object {
-                                            "defaultSelections": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                            ],
-                                            "options": Array [
-                                              Object {
-                                                "id": "v",
-                                                "name": "Vertical",
-                                              },
-                                              Object {
-                                                "id": "h",
-                                                "name": "Horizontal",
-                                              },
-                                            ],
-                                          },
-                                        },
-                                        Object {
-                                          "component": [Function],
-                                          "eleType": "buttons",
                                           "mapTo": "mode",
                                           "name": "Mode",
                                           "props": Object {
@@ -9587,30 +9402,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                       Object {
                                                         "component": [Function],
                                                         "eleType": "buttons",
-                                                        "mapTo": "orientation",
-                                                        "name": "Orientation",
-                                                        "props": Object {
-                                                          "defaultSelections": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                          ],
-                                                          "options": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                            Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
-                                                            },
-                                                          ],
-                                                        },
-                                                      },
-                                                      Object {
-                                                        "component": [Function],
-                                                        "eleType": "buttons",
                                                         "mapTo": "mode",
                                                         "name": "Mode",
                                                         "props": Object {
@@ -9863,281 +9654,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                   defaultSelections={
                                                     Array [
                                                       Object {
-                                                        "id": "v",
-                                                        "name": "Vertical",
-                                                      },
-                                                    ]
-                                                  }
-                                                  groupOptions={
-                                                    Array [
-                                                      Object {
-                                                        "id": "v",
-                                                        "label": "Vertical",
-                                                        "name": "Vertical",
-                                                      },
-                                                      Object {
-                                                        "id": "h",
-                                                        "label": "Horizontal",
-                                                        "name": "Horizontal",
-                                                      },
-                                                    ]
-                                                  }
-                                                  handleButtonChange={[Function]}
-                                                  idSelected="v"
-                                                  key="viz-series-0"
-                                                  legend="Orientation"
-                                                  options={
-                                                    Array [
-                                                      Object {
-                                                        "id": "v",
-                                                        "name": "Vertical",
-                                                      },
-                                                      Object {
-                                                        "id": "h",
-                                                        "name": "Horizontal",
-                                                      },
-                                                    ]
-                                                  }
-                                                  title="Orientation"
-                                                  vizState={Object {}}
-                                                >
-                                                  <EuiTitle
-                                                    size="xxs"
-                                                  >
-                                                    <h3
-                                                      className="euiTitle euiTitle--xxsmall"
-                                                    >
-                                                      Orientation
-                                                    </h3>
-                                                  </EuiTitle>
-                                                  <EuiSpacer
-                                                    size="s"
-                                                  >
-                                                    <div
-                                                      className="euiSpacer euiSpacer--s"
-                                                    />
-                                                  </EuiSpacer>
-                                                  <div
-                                                    style={
-                                                      Object {
-                                                        "width": "fit-content",
-                                                      }
-                                                    }
-                                                  >
-                                                    <EuiButtonGroup
-                                                      buttonSize="compressed"
-                                                      id="random_html_id"
-                                                      idSelected="v"
-                                                      isFullWidth={false}
-                                                      legend="Orientation"
-                                                      name="Orientation"
-                                                      onChange={[Function]}
-                                                      options={
-                                                        Array [
-                                                          Object {
-                                                            "id": "v",
-                                                            "label": "Vertical",
-                                                            "name": "Vertical",
-                                                          },
-                                                          Object {
-                                                            "id": "h",
-                                                            "label": "Horizontal",
-                                                            "name": "Horizontal",
-                                                          },
-                                                        ]
-                                                      }
-                                                    >
-                                                      <fieldset
-                                                        className="euiButtonGroup euiButtonGroup--compressed euiButtonGroup--text"
-                                                        disabled={false}
-                                                        id="random_html_id"
-                                                      >
-                                                        <EuiScreenReaderOnly>
-                                                          <legend
-                                                            className="euiScreenReaderOnly"
-                                                          >
-                                                            Orientation
-                                                          </legend>
-                                                        </EuiScreenReaderOnly>
-                                                        <div
-                                                          className="euiButtonGroup__buttons"
-                                                        >
-                                                          <EuiButtonGroupButton
-                                                            color="text"
-                                                            element="label"
-                                                            id="v"
-                                                            isDisabled={false}
-                                                            isIconOnly={false}
-                                                            isSelected={true}
-                                                            key="0"
-                                                            label="Vertical"
-                                                            name="Vertical"
-                                                            onChange={[Function]}
-                                                            size="compressed"
-                                                          >
-                                                            <EuiButtonDisplay
-                                                              baseClassName="euiButtonGroupButton"
-                                                              className="euiButtonGroupButton-isSelected"
-                                                              color="text"
-                                                              element="label"
-                                                              fill={false}
-                                                              htmlFor="random_html_id"
-                                                              isDisabled={false}
-                                                              onClick={[Function]}
-                                                              size="s"
-                                                              textProps={
-                                                                Object {
-                                                                  "className": "euiButtonGroupButton__textShift",
-                                                                  "data-text": "Vertical",
-                                                                  "ref": [Function],
-                                                                  "title": "Vertical",
-                                                                }
-                                                              }
-                                                            >
-                                                              <label
-                                                                className="euiButtonGroupButton euiButtonGroupButton--text euiButtonGroupButton--small euiButtonGroupButton-isSelected"
-                                                                disabled={false}
-                                                                htmlFor="random_html_id"
-                                                                onClick={[Function]}
-                                                                style={
-                                                                  Object {
-                                                                    "minWidth": undefined,
-                                                                  }
-                                                                }
-                                                              >
-                                                                <EuiButtonContent
-                                                                  className="euiButton__content"
-                                                                  iconSide="left"
-                                                                  textProps={
-                                                                    Object {
-                                                                      "className": "euiButton__text euiButtonGroupButton__textShift",
-                                                                      "data-text": "Vertical",
-                                                                      "ref": [Function],
-                                                                      "title": "Vertical",
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <span
-                                                                    className="euiButtonContent euiButton__content"
-                                                                  >
-                                                                    <span
-                                                                      className="euiButton__text euiButtonGroupButton__textShift"
-                                                                      data-text="Vertical"
-                                                                      title="Vertical"
-                                                                    >
-                                                                      <input
-                                                                        checked={true}
-                                                                        className="euiScreenReaderOnly"
-                                                                        data-test-subj="v"
-                                                                        disabled={false}
-                                                                        id="random_html_id"
-                                                                        name="Vertical"
-                                                                        onChange={[Function]}
-                                                                        type="radio"
-                                                                      />
-                                                                      Vertical
-                                                                    </span>
-                                                                  </span>
-                                                                </EuiButtonContent>
-                                                              </label>
-                                                            </EuiButtonDisplay>
-                                                          </EuiButtonGroupButton>
-                                                          <EuiButtonGroupButton
-                                                            color="text"
-                                                            element="label"
-                                                            id="h"
-                                                            isDisabled={false}
-                                                            isIconOnly={false}
-                                                            isSelected={false}
-                                                            key="1"
-                                                            label="Horizontal"
-                                                            name="Horizontal"
-                                                            onChange={[Function]}
-                                                            size="compressed"
-                                                          >
-                                                            <EuiButtonDisplay
-                                                              baseClassName="euiButtonGroupButton"
-                                                              className=""
-                                                              color="text"
-                                                              element="label"
-                                                              fill={false}
-                                                              htmlFor="random_html_id"
-                                                              isDisabled={false}
-                                                              onClick={[Function]}
-                                                              size="s"
-                                                              textProps={
-                                                                Object {
-                                                                  "className": "euiButtonGroupButton__textShift",
-                                                                  "data-text": "Horizontal",
-                                                                  "ref": [Function],
-                                                                  "title": "Horizontal",
-                                                                }
-                                                              }
-                                                            >
-                                                              <label
-                                                                className="euiButtonGroupButton euiButtonGroupButton--text euiButtonGroupButton--small"
-                                                                disabled={false}
-                                                                htmlFor="random_html_id"
-                                                                onClick={[Function]}
-                                                                style={
-                                                                  Object {
-                                                                    "minWidth": undefined,
-                                                                  }
-                                                                }
-                                                              >
-                                                                <EuiButtonContent
-                                                                  className="euiButton__content"
-                                                                  iconSide="left"
-                                                                  textProps={
-                                                                    Object {
-                                                                      "className": "euiButton__text euiButtonGroupButton__textShift",
-                                                                      "data-text": "Horizontal",
-                                                                      "ref": [Function],
-                                                                      "title": "Horizontal",
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <span
-                                                                    className="euiButtonContent euiButton__content"
-                                                                  >
-                                                                    <span
-                                                                      className="euiButton__text euiButtonGroupButton__textShift"
-                                                                      data-text="Horizontal"
-                                                                      title="Horizontal"
-                                                                    >
-                                                                      <input
-                                                                        checked={false}
-                                                                        className="euiScreenReaderOnly"
-                                                                        data-test-subj="h"
-                                                                        disabled={false}
-                                                                        id="random_html_id"
-                                                                        name="Horizontal"
-                                                                        onChange={[Function]}
-                                                                        type="radio"
-                                                                      />
-                                                                      Horizontal
-                                                                    </span>
-                                                                  </span>
-                                                                </EuiButtonContent>
-                                                              </label>
-                                                            </EuiButtonDisplay>
-                                                          </EuiButtonGroupButton>
-                                                        </div>
-                                                      </fieldset>
-                                                    </EuiButtonGroup>
-                                                  </div>
-                                                </ButtonGroupItem>
-                                                <EuiSpacer
-                                                  size="s"
-                                                >
-                                                  <div
-                                                    className="euiSpacer euiSpacer--s"
-                                                  />
-                                                </EuiSpacer>
-                                                <ButtonGroupItem
-                                                  defaultSelections={
-                                                    Array [
-                                                      Object {
                                                         "id": "group",
                                                         "name": "Group",
                                                       },
@@ -10159,7 +9675,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                   }
                                                   handleButtonChange={[Function]}
                                                   idSelected="group"
-                                                  key="viz-series-1"
+                                                  key="viz-series-0"
                                                   legend="Mode"
                                                   options={
                                                     Array [
@@ -10412,7 +9928,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                 <InputFieldItem
                                                   currentValue=""
                                                   handleInputChange={[Function]}
-                                                  key="viz-series-2"
+                                                  key="viz-series-1"
                                                   title="Label Size"
                                                   vizState={Object {}}
                                                 >
@@ -10482,7 +9998,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                 <SliderConfig
                                                   currentRange={0}
                                                   handleSliderChange={[Function]}
-                                                  key="viz-series-3"
+                                                  key="viz-series-2"
                                                   max={90}
                                                   maxRange={90}
                                                   min={-90}
@@ -11414,7 +10930,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                 <SliderConfig
                                                   currentRange={0.7}
                                                   handleSliderChange={[Function]}
-                                                  key="viz-series-4"
+                                                  key="viz-series-3"
                                                   max={1}
                                                   maxRange={1}
                                                   minRange={0}
@@ -11602,7 +11118,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                 <SliderConfig
                                                   currentRange={0.97}
                                                   handleSliderChange={[Function]}
-                                                  key="viz-series-5"
+                                                  key="viz-series-4"
                                                   max={1}
                                                   maxRange={1}
                                                   minRange={0}
@@ -11790,7 +11306,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                 <SliderConfig
                                                   currentRange={1}
                                                   handleSliderChange={[Function]}
-                                                  key="viz-series-6"
+                                                  key="viz-series-5"
                                                   max={10}
                                                   maxRange={10}
                                                   minRange={0}
@@ -11978,7 +11494,7 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                 <SliderConfig
                                                   currentRange={80}
                                                   handleSliderChange={[Function]}
-                                                  key="viz-series-7"
+                                                  key="viz-series-6"
                                                   max={100}
                                                   maxRange={100}
                                                   minRange={0}
@@ -12452,30 +11968,6 @@ exports[`Config panel component Renders config panel with visualization data 1`]
                                                     "mapTo": "chartStyles",
                                                     "name": "Chart styles",
                                                     "schemas": Array [
-                                                      Object {
-                                                        "component": [Function],
-                                                        "eleType": "buttons",
-                                                        "mapTo": "orientation",
-                                                        "name": "Orientation",
-                                                        "props": Object {
-                                                          "defaultSelections": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                          ],
-                                                          "options": Array [
-                                                            Object {
-                                                              "id": "v",
-                                                              "name": "Vertical",
-                                                            },
-                                                            Object {
-                                                              "id": "h",
-                                                              "name": "Horizontal",
-                                                            },
-                                                          ],
-                                                        },
-                                                      },
                                                       Object {
                                                         "component": [Function],
                                                         "eleType": "buttons",

@@ -129,6 +129,7 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
       histogram: isValidValueOptionsXYAxes,
       pie: isValidValueOptionsXYAxes,
       scatter: isValidValueOptionsXYAxes,
+      horizontal_bar: isValidValueOptionsXYAxes,
     }
     return isValid_valueOptions[curVisId];
   }, [vizConfigs.dataConfig]);
@@ -221,14 +222,20 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     );
   };
 
+  const isLineOrScatter = (vs: string) => (vs === visChartTypes.Line || vs === visChartTypes.Scatter);
+  const isVerticalorHorizontalBar = (vs: string) => (vs === visChartTypes.Bar || vs === visChartTypes.HorizontalBar);
+
   const memorizedVisualizationTypes = useMemo(() => {
     let visDefinition = {}
     return ENABLED_VIS_TYPES.map((vs: string) => {
-      if (vs === visChartTypes.Line || vs === visChartTypes.Scatter) {
+      if (isLineOrScatter(vs)) {
         visDefinition = vs === visChartTypes.Line ? getVisType(vs, { type: visChartTypes.Line }) : getVisType(vs, { type: visChartTypes.Scatter });
+      } else if (isVerticalorHorizontalBar(vs)) {
+        visDefinition = vs === visChartTypes.Bar ? getVisType(vs, { type: visChartTypes.Bar }) : getVisType(vs, { type: visChartTypes.HorizontalBar });
       } else {
         visDefinition = getVisType(vs);
       }
+
       return {
         ...visDefinition,
       };
@@ -256,10 +263,6 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     [memorizedVisualizationTypes]
   );
 
-  const vizTypeList = useMemo(() => {
-    return memorizedVisualizationTypes.filter((type) => type.id !== 'horizontal_bar');
-  }, [memorizedVisualizationTypes]);
-
   return (
     <>
       <EuiFlexGroup
@@ -274,7 +277,7 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
           <EuiComboBox
             aria-label="config chart selector"
             placeholder="Select a chart"
-            options={vizTypeList}
+            options={memorizedVisualizationTypes}
             selectedOptions={[getSelectedVisDById(curVisId)]}
             singleSelection
             onChange={(visType) => {

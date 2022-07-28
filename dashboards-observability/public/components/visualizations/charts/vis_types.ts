@@ -17,7 +17,7 @@ import { createTextTypeDefinition } from './text/text_type';
 
 export const VIS_TYPES = {
   bar: createBarTypeDefinition,
-  horizontal_bar: createHorizontalBarTypeDefinition,
+  horizontal_bar: createBarTypeDefinition,
   line: createLineTypeDefinition,
   pie: createPieTypeDefinition,
   histogram: createHistogramVisDefinition,
