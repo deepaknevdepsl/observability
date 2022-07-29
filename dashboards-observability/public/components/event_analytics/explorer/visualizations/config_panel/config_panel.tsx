@@ -222,15 +222,9 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     );
   };
 
-  const memorizedVisualizationTypes = useMemo(() => {
-    let visDefinition = {}
-    return ENABLED_VIS_TYPES.map((vs: string) => {
-      visDefinition = getVisTypeData(vs);
-      return {
-        ...visDefinition,
-      };
-    });
-  }, []);
+  const memorizedVisualizationTypes = useMemo(() =>
+    ENABLED_VIS_TYPES.map((vs: string) => getVisTypeData(vs))
+    , []);
 
   const vizSelectableItemRenderer = (option: EuiComboBoxOptionOption<any>) => {
     const { iconType = 'empty', label = '' } = option;
