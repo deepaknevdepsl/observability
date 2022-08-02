@@ -8,7 +8,6 @@ import { getPlotlySharedConfigs, getPlotlyCategory } from '../shared/shared_conf
 import { LensIconChartBar } from '../../assets/chart_bar';
 import { VizDataPanel } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/default_vis_editor';
 import { ConfigEditor } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/json_editor';
-import { ConfigValueOptions } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls';
 import { ConfigAvailability } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
 import { ButtonGroupItem } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_button_group';
 import { ConfigBarChartStyles } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_bar_chart_styles';
@@ -28,8 +27,8 @@ export const createBarTypeDefinition = (params: any) => ({
   name: params.type ? params.type : 'bar',
   type: 'bar',
   id: params.type ? params.type : 'bar',
-  label: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Bar',
-  fullLabel: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Bar',
+  label: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Vertical bar',
+  fullLabel: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Vertical bar',
   iconType: 'visBarVerticalStacked',
   selection: {
     dataLoss: 'nothing',
@@ -63,7 +62,7 @@ export const createBarTypeDefinition = (params: any) => ({
             mapTo: 'legend',
             schemas: [
               {
-                name: 'Show Legend',
+                name: 'Show legend',
                 mapTo: 'showLegend',
                 component: null,
                 props: {
@@ -108,7 +107,7 @@ export const createBarTypeDefinition = (params: any) => ({
                 },
               },
               {
-                name: 'Label Size',
+                name: 'Label size',
                 component: InputFieldItem,
                 mapTo: 'labelSize',
                 eleType: 'input',
@@ -165,7 +164,7 @@ export const createBarTypeDefinition = (params: any) => ({
                 eleType: 'slider',
               },
               {
-                name: 'Fill Opacity',
+                name: 'Fill opacity',
                 component: SliderConfig,
                 mapTo: 'fillOpacity',
                 defaultState: 80,
@@ -178,7 +177,7 @@ export const createBarTypeDefinition = (params: any) => ({
           },
           {
             id: 'color-theme',
-            name: 'Color Theme',
+            name: 'Color theme',
             editor: ConfigColorTheme,
             mapTo: 'colorTheme',
             schemas: [],
