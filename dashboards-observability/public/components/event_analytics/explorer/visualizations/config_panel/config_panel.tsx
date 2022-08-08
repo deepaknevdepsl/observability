@@ -61,7 +61,12 @@ interface PanelTabType {
   content?: any;
 }
 
-export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsValidConfigOptionState }: any) => {
+export const ConfigPanel = ({
+  visualizations,
+  setCurVisId,
+  callback,
+  changeIsValidConfigOptionState,
+}: any) => {
   const { tabId, curVisId, dispatch, changeVisualizationConfig, setToast } = useContext<any>(
     TabContext
   );
@@ -72,17 +77,17 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
     let chartBasedAxes: ValueOptionsAxes = {};
     const [valueField] = data.defaultAxes?.yaxis ?? [];
     if (curVisId === visChartTypes.TreeMap) {
-      chartBasedAxes["childField"] = data.defaultAxes.xaxis ?? [];
-      chartBasedAxes["valueField"] = valueField && [valueField];
+      chartBasedAxes['childField'] = data.defaultAxes.xaxis ?? [];
+      chartBasedAxes['valueField'] = valueField && [valueField];
     } else if (curVisId === visChartTypes.HeatMap) {
-      chartBasedAxes["zaxis"] = valueField && [valueField];
+      chartBasedAxes['zaxis'] = valueField && [valueField];
     } else {
       chartBasedAxes = { ...data.defaultAxes };
     }
     return {
-      valueOptions: { ...(chartBasedAxes && chartBasedAxes) }
-    }
-  }
+      valueOptions: { ...(chartBasedAxes && chartBasedAxes) },
+    };
+  };
   const [vizConfigs, setVizConfigs] = useState({
     dataConfig: {},
     layoutConfig: userConfigs?.layoutConfig
@@ -94,7 +99,9 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
   useEffect(() => {
     setVizConfigs({
       ...userConfigs,
-      dataConfig: { ...(userConfigs?.dataConfig ? userConfigs.dataConfig : getDefaultAxisSelected()) },
+      dataConfig: {
+        ...(userConfigs?.dataConfig ? userConfigs.dataConfig : getDefaultAxisSelected()),
+      },
       layoutConfig: userConfigs?.layoutConfig
         ? hjson.stringify({ ...userConfigs.layoutConfig }, HJSON_STRINGIFY_OPTIONS)
         : getDefaultSpec(),
@@ -116,14 +123,20 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
   const isValidValueOptionConfigSelected = useMemo(() => {
     const valueOptions = vizConfigs.dataConfig?.valueOptions;
     const { TreeMap, Gauge, HeatMap } = visChartTypes;
-    const isValidValueOptionsXYAxes = VIZ_CONTAIN_XY_AXIS.includes(curVisId) &&
-      valueOptions?.xaxis?.length !== 0 && valueOptions?.yaxis?.length !== 0;
+    const isValidValueOptionsXYAxes =
+      VIZ_CONTAIN_XY_AXIS.includes(curVisId) &&
+      valueOptions?.xaxis?.length !== 0 &&
+      valueOptions?.yaxis?.length !== 0;
 
     const isValid_valueOptions: { [key: string]: boolean } = {
-      tree_map: curVisId === TreeMap && valueOptions?.childField?.length !== 0 &&
+      tree_map:
+        curVisId === TreeMap &&
+        valueOptions?.childField?.length !== 0 &&
         valueOptions?.valueField?.length !== 0,
       gauge: true,
-      heatmap: Boolean(curVisId === HeatMap && valueOptions?.zaxis && valueOptions.zaxis?.length !== 0),
+      heatmap: Boolean(
+        curVisId === HeatMap && valueOptions?.zaxis && valueOptions.zaxis?.length !== 0
+      ),
       bar: isValidValueOptionsXYAxes,
       line: isValidValueOptionsXYAxes,
       histogram: isValidValueOptionsXYAxes,
@@ -131,33 +144,38 @@ export const ConfigPanel = ({ visualizations, setCurVisId, callback, changeIsVal
       scatter: isValidValueOptionsXYAxes,
       horizontal_bar: isValidValueOptionsXYAxes,
       logs_view: true,
-    }
+    };
     return isValid_valueOptions[curVisId];
   }, [vizConfigs.dataConfig]);
 
-  useEffect(() => changeIsValidConfigOptionState(Boolean(isValidValueOptionConfigSelected)), [isValidValueOptionConfigSelected]);
+  useEffect(() => changeIsValidConfigOptionState(Boolean(isValidValueOptionConfigSelected)), [
+    isValidValueOptionConfigSelected,
+  ]);
 
-  const handleConfigUpdate = useCallback((updatedConfigs) => {
-    try {
-      if (!isValidValueOptionConfigSelected) {
-        setToast(`Invalid value options configuration selected.`, 'danger');
-      }
-      dispatch(
-        changeVisualizationConfig({
-          tabId,
-          vizId: curVisId,
-          data: {
-            ...{
-              ...updatedConfigs,
-              layoutConfig: hjson.parse(updatedConfigs.layoutConfig),
+  const handleConfigUpdate = useCallback(
+    (updatedConfigs) => {
+      try {
+        if (!isValidValueOptionConfigSelected) {
+          setToast(`Invalid value options configuration selected.`, 'danger');
+        }
+        dispatch(
+          changeVisualizationConfig({
+            tabId,
+            vizId: curVisId,
+            data: {
+              ...{
+                ...updatedConfigs,
+                layoutConfig: hjson.parse(updatedConfigs.layoutConfig),
+              },
             },
-          },
-        })
-      );
-    } catch (e: any) {
-      setToast(`Invalid visualization configurations. error: ${e.message}`, 'danger');
-    }
-  }, [tabId, changeVisualizationConfig, dispatch, setToast, curVisId]);
+          })
+        );
+      } catch (e: any) {
+        setToast(`Invalid visualization configurations. error: ${e.message}`, 'danger');
+      }
+    },
+    [tabId, changeVisualizationConfig, dispatch, setToast, curVisId]
+  );
 
   const handleConfigChange = (configSchema: string) => {
     return (configChanges: any) => {
