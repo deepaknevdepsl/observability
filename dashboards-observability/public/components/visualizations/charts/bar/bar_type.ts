@@ -8,7 +8,6 @@ import { getPlotlySharedConfigs, getPlotlyCategory } from '../shared/shared_conf
 import { LensIconChartBar } from '../../assets/chart_bar';
 import { VizDataPanel } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/default_vis_editor';
 import { ConfigEditor } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/json_editor';
-import { ConfigValueOptions } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls';
 import { ConfigAvailability } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
 import { ButtonGroupItem } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_button_group';
 import { ConfigBarChartStyles } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_bar_chart_styles';
@@ -17,7 +16,7 @@ import {
   ConfigLegend,
   InputFieldItem,
 } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls';
-import { DefaultChartStyles } from '../../../../../common/constants/shared';
+import { DefaultChartStyles, visChartTypes } from '../../../../../common/constants/shared';
 
 import { ConfigColorTheme } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_color_theme';
 const sharedConfigs = getPlotlySharedConfigs();
@@ -25,11 +24,11 @@ const VIS_CATEGORY = getPlotlyCategory();
 
 const { LegendPosition, ShowLegend } = DefaultChartStyles;
 export const createBarTypeDefinition = (params: any) => ({
-  name: 'bar',
+  name: params.type ? params.type : 'bar',
   type: 'bar',
-  id: 'bar',
-  label: 'Vertical bar',
-  fullLabel: 'Vertical bar',
+  id: params.type ? params.type : 'bar',
+  label: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Vertical bar',
+  fullLabel: params.type === visChartTypes.HorizontalBar ? 'Horizontal Bar' : 'Vertical bar',
   iconType: 'visBarVerticalStacked',
   selection: {
     dataLoss: 'nothing',
@@ -38,7 +37,7 @@ export const createBarTypeDefinition = (params: any) => ({
   icon: LensIconChartBar,
   categoryAxis: 'xaxis',
   seriesAxis: 'yaxis',
-  orientation: 'v',
+  orientation: params.type === visChartTypes.HorizontalBar ? 'h' : 'v',
   mode: 'group',
   labelAngle: 0,
   lineWidth: 1,
@@ -94,19 +93,6 @@ export const createBarTypeDefinition = (params: any) => ({
             editor: ConfigBarChartStyles,
             mapTo: 'chartStyles',
             schemas: [
-              {
-                name: 'Orientation',
-                component: ButtonGroupItem,
-                mapTo: 'orientation',
-                eleType: 'buttons',
-                props: {
-                  options: [
-                    { name: 'Vertical', id: 'v' },
-                    { name: 'Horizontal', id: 'h' },
-                  ],
-                  defaultSelections: [{ name: 'Vertical', id: 'v' }],
-                },
-              },
               {
                 name: 'Mode',
                 component: ButtonGroupItem,

@@ -31,6 +31,8 @@ import {
   visChartTypes,
 } from '../../../../../../common/constants/shared';
 import { VIZ_CONTAIN_XY_AXIS } from '../../../../../../common/constants/explorer';
+import { getVisTypeData } from '../../../../custom_panels/helpers/utils';
+
 
 const CONFIG_LAYOUT_TEMPLATE = `
 {
@@ -147,6 +149,7 @@ export const ConfigPanel = ({
       pie: isValidValueOptionsXYAxes,
       scatter: isValidValueOptionsXYAxes,
       logs_view: true,
+      horizontal_bar: isValidValueOptionsXYAxes,
     };
     return isValid_valueOptions[curVisId];
   }, [vizConfigs.dataConfig]);
@@ -244,15 +247,9 @@ export const ConfigPanel = ({
     );
   };
 
-  const memorizedVisualizationTypes = useMemo(
-    () =>
-      ENABLED_VIS_TYPES.map((vs: string) =>
-        vs === visChartTypes.Line || vs === visChartTypes.Scatter
-          ? getVisType(vs, { type: vs })
-          : getVisType(vs)
-      ),
-    []
-  );
+  const memorizedVisualizationTypes = useMemo(() =>
+    ENABLED_VIS_TYPES.map((vs: string) => getVisTypeData(vs))
+    , []);
 
   const vizSelectableItemRenderer = (option: EuiComboBoxOptionOption<any>) => {
     const { iconType = 'empty', label = '' } = option;
@@ -275,10 +272,6 @@ export const ConfigPanel = ({
     [memorizedVisualizationTypes]
   );
 
-  const vizTypeList = useMemo(() => {
-    return memorizedVisualizationTypes.filter((type) => type.id !== 'horizontal_bar');
-  }, [memorizedVisualizationTypes]);
-
   return (
     <>
       <EuiFlexGroup
@@ -293,7 +286,7 @@ export const ConfigPanel = ({
           <EuiComboBox
             aria-label="config chart selector"
             placeholder="Select a chart"
-            options={vizTypeList}
+            options={memorizedVisualizationTypes}
             selectedOptions={[getSelectedVisDById(curVisId)]}
             singleSelection
             onChange={(visType) => {
