@@ -84,6 +84,7 @@ export enum visChartTypes {
   TreeMap = 'tree_map',
   Scatter = 'scatter',
   LogsView = 'logs_view',
+  Box = 'box_plot'
 }
 
 export interface ValueOptionsAxes {
@@ -98,6 +99,7 @@ export interface ValueOptionsAxes {
 
 export const NUMERICAL_FIELDS = ['short', 'integer', 'long', 'float', 'double'];
 
+<<<<<<< HEAD
 export const ENABLED_VIS_TYPES = [
   visChartTypes.Bar,
   visChartTypes.HorizontalBar,
@@ -111,6 +113,9 @@ export const ENABLED_VIS_TYPES = [
   visChartTypes.Scatter,
   visChartTypes.LogsView,
 ];
+=======
+export const ENABLED_VIS_TYPES = [visChartTypes.Bar, visChartTypes.HorizontalBar, visChartTypes.Line, visChartTypes.Pie, visChartTypes.HeatMap, visChartTypes.Text, visChartTypes.TreeMap, visChartTypes.Gauge, visChartTypes.Histogram, visChartTypes.Box];
+>>>>>>> cfed55e (Box plot integration inprogress)
 
 //Live tail constants
 export const LIVE_OPTIONS = [

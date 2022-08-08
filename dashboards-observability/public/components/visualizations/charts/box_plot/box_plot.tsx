@@ -1,0 +1,217 @@
+/*
+ * Copyright OpenSearch Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useMemo } from 'react';
+import { take, isEmpty, last } from 'lodash';
+import { Plt } from '../../plotly/plot';
+import { AvailabilityUnitType } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
+import { ThresholdUnitType } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_thresholds';
+import {
+  DefaultChartStyles,
+  FILLOPACITY_DIV_FACTOR,
+  PLOTLY_COLOR,
+} from '../../../../../common/constants/shared';
+import { hexToRgb } from '../../../event_analytics/utils/utils';
+import { EmptyPlaceholder } from '../../../event_analytics/explorer/visualizations/shared_components/empty_placeholder';
+
+export const BoxPlot = ({ visualizations, layout, config }: any) => {
+  const {
+    DefaultMode,
+    Interpolation,
+    LineWidth,
+    FillOpacity,
+    MarkerSize,
+    LegendPosition,
+    ShowLegend,
+    LabelAngle,
+  } = DefaultChartStyles;
+  const {
+    data = {},
+    metadata: { fields },
+  } = visualizations.data.rawVizData;
+  const { defaultAxes } = visualizations.data;
+  const {
+    dataConfig = {},
+    layoutConfig = {},
+    availabilityConfig = {},
+  } = visualizations?.data?.userConfigs;
+  console.log('visualizations.data?.rawVizData ', visualizations.data?.rawVizData)
+  const dataConfigTab =
+    visualizations.data?.rawVizData?.box?.dataConfig &&
+    visualizations.data.rawVizData.box.dataConfig;
+  console.log('dataConfigTab ', dataConfigTab)
+  const xaxis = dataConfigTab?.dimensions ? dataConfigTab?.dimensions.filter((item) => item.label) : [];
+  const yaxis = dataConfigTab?.metrics ? dataConfigTab?.metrics.filter((item) => item.label) : [];
+  console.log('xaxis ', xaxis)
+  const lastIndex = fields.length - 1;
+
+  const mode = dataConfig?.chartStyles?.style || DefaultMode;
+  const lineShape = dataConfig?.chartStyles?.interpolation || Interpolation;
+  const lineWidth = dataConfig?.chartStyles?.lineWidth || LineWidth;
+  const showLegend = !(
+    dataConfig?.legend?.showLegend && dataConfig.legend.showLegend !== ShowLegend
+  );
+  const legendPosition = dataConfig?.legend?.position || LegendPosition;
+  const markerSize = dataConfig?.chartStyles?.pointSize || MarkerSize;
+  const fillOpacity =
+    dataConfig?.chartStyles?.fillOpacity !== undefined
+      ? dataConfig?.chartStyles?.fillOpacity / FILLOPACITY_DIV_FACTOR
+      : FillOpacity / FILLOPACITY_DIV_FACTOR;
+  const tickAngle = dataConfig?.chartStyles?.rotateLabels || LabelAngle;
+  const labelSize = dataConfig?.chartStyles?.labelSize;
+  const legendSize = dataConfig?.legend?.legendSize;
+
+  const getSelectedColorTheme = (field: any, index: number) =>
+    (dataConfig?.colorTheme?.length > 0 &&
+      dataConfig.colorTheme.find((colorSelected) => colorSelected.name.name === field.name)
+        ?.color) ||
+    PLOTLY_COLOR[index % PLOTLY_COLOR.length];
+
+  if (isEmpty(xaxis) || isEmpty(yaxis))
+    return <EmptyPlaceholder icon={visualizations?.vis?.iconType} />;
+
+  let valueSeries;
+  if (!isEmpty(xaxis) && !isEmpty(yaxis)) {
+    valueSeries = [...yaxis];
+  } else {
+    valueSeries = (defaultAxes.yaxis || take(fields, lastIndex > 0 ? lastIndex : 1))
+      .map((item, i) => ({ ...item, side: i === 0 ? 'left' : 'right' }));
+  }
+
+  let multiMetrics = {};
+  const [calculatedLayout, BoxValues] = useMemo(() => {
+    const isBarMode = mode === 'bar';
+    let calculatedBoxValues = valueSeries.map((field: any, index: number) => {
+      const selectedColor = getSelectedColorTheme(field, index);
+      const fillColor = hexToRgb(selectedColor, fillOpacity);
+      const barMarker = {
+        color: fillColor,
+        line: {
+          color: selectedColor,
+          width: lineWidth,
+        },
+      };
+      const fillProperty = {
+        fill: 'tozeroy',
+        fillcolor: fillColor,
+      };
+      const multiYaxis = { yaxis: `y${index + 1}` };
+      multiMetrics = {
+        ...multiMetrics,
+        [`yaxis${index > 0 ? index + 1 : ''}`]: {
+          titlefont: {
+            color: selectedColor,
+          },
+          tickfont: {
+            color: selectedColor,
+            ...(labelSize && {
+              size: labelSize,
+            }),
+          },
+          overlaying: 'y',
+          side: field.side,
+        },
+      };
+
+      return {
+        x: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name],
+        y: data[field.label],
+        type: isBarMode ? 'bar' : 'box',
+        name: field.label,
+        mode,
+        ...(!['bar', 'markers'].includes(mode) && fillProperty),
+        line: {
+          shape: lineShape,
+          width: lineWidth,
+          color: selectedColor,
+        },
+        marker: {
+          size: markerSize,
+          ...(isBarMode && barMarker),
+        },
+        ...(index >= 1 && multiYaxis),
+      };
+    });
+
+    let layoutForBarMode = {
+      barmode: 'group',
+    };
+    const mergedLayout = {
+      ...layout,
+      ...layoutConfig.layout,
+      title: dataConfig?.panelOptions?.title || layoutConfig.layout?.title || '',
+      legend: {
+        ...layout.legend,
+        orientation: legendPosition,
+        ...(legendSize && {
+          font: {
+            size: legendSize,
+          },
+        }),
+      },
+      xaxis: {
+        tickangle: tickAngle,
+        automargin: true,
+        tickfont: {
+          ...(labelSize && {
+            size: labelSize,
+          }),
+        },
+      },
+      showlegend: showLegend,
+      // ...(isBarMode && layoutForBarMode),
+      ...(multiMetrics && multiMetrics),
+    };
+
+    if (dataConfig.thresholds || availabilityConfig.level) {
+      const thresholdTraces = {
+        x: [],
+        y: [],
+        mode: 'text',
+        text: [],
+      };
+      const thresholds = dataConfig.thresholds ? dataConfig.thresholds : [];
+      const levels = availabilityConfig.level ? availabilityConfig.level : [];
+
+      const mapToLine = (list: ThresholdUnitType[] | AvailabilityUnitType[], lineStyle: any) => {
+        return list.map((thr: ThresholdUnitType) => {
+          thresholdTraces.x.push(
+            data[!isEmpty(xaxis) ? xaxis[xaxis.length - 1]?.label : fields[lastIndex].name][0]
+          );
+          thresholdTraces.y.push(thr.value * (1 + 0.06));
+          thresholdTraces.text.push(thr.name);
+          return {
+            type: 'box',
+            x0: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name][0],
+            y0: thr.value,
+            x1: last(data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name]),
+            y1: thr.value,
+            name: thr.name || '',
+            opacity: 0.7,
+            line: {
+              color: thr.color,
+              width: 3,
+              ...lineStyle,
+            },
+          };
+        });
+      };
+
+      mergedLayout.shapes = [
+        ...mapToLine(thresholds, { dash: 'dashdot' }),
+        ...mapToLine(levels, {}),
+      ];
+      calculatedBoxValues = [...calculatedBoxValues, thresholdTraces];
+    }
+    return [mergedLayout, calculatedBoxValues];
+  }, [data, fields, lastIndex, layout, layoutConfig, xaxis, yaxis, mode, valueSeries]);
+
+  const mergedConfigs = {
+    ...config,
+    ...(layoutConfig.config && layoutConfig.config),
+  };
+  console.log('BoxValues ',BoxValues)
+  return <Plt data={BoxValues} layout={calculatedLayout} config={mergedConfigs} />
+};
