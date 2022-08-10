@@ -235,7 +235,7 @@ export const createBoxPlotTypeDefinition = (params: any = {}) => ({
           showgrid: false,
           visible: true,
         },
-        boxmode:'group',
+        // boxmode:'group',
       },
     },
     config: {

@@ -116,12 +116,18 @@ export const BoxPlot = ({ visualizations, layout, config }: any) => {
       };
 
       return {
-        x: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name],
+        // x: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name],
         y: data[field.label],
-        type: isBarMode ? 'bar' : 'box',
+        type: 'box',
         name: field.label,
         mode,
-        ...(!['bar', 'markers'].includes(mode) && fillProperty),
+        // ...(!['bar', 'markers'].includes(mode) && fillProperty),
+        // quartilemethod:'inclusive',
+      //   hoveron: 'boxes+points',
+        
+      //   boxpoints: 'all',
+      // jitter: 0.3,
+      // pointpos: -1.8,
         line: {
           shape: lineShape,
           width: lineWidth,
@@ -135,9 +141,7 @@ export const BoxPlot = ({ visualizations, layout, config }: any) => {
       };
     });
 
-    let layoutForBarMode = {
-      barmode: 'group',
-    };
+
     const mergedLayout = {
       ...layout,
       ...layoutConfig.layout,
