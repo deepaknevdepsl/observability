@@ -3,51 +3,49 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BoxPlot } from './box_plot';
 import { getPlotlySharedConfigs, getPlotlyCategory } from '../shared/shared_configs';
-import { LensIconChartLine } from '../../assets/chart_line';
-import { PLOTLY_COLOR } from '../../../../../common/constants/shared';
+import { LensIconChartBar } from '../../assets/chart_bar';
 import { VizDataPanel } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/default_vis_editor';
 import { ConfigEditor } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/json_editor';
+import { ConfigAvailability } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
+import { ButtonGroupItem } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_button_group';
+import { ConfigBoxChartStyles } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_box_chart_styles';
+import { SliderConfig } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_style_slider';
 import {
-  ConfigThresholds,
-  ConfigBoxChartStyles,
   ConfigLegend,
   InputFieldItem,
-  ConfigColorTheme
 } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls';
-import { ConfigAvailability } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
 import { DefaultChartStyles } from '../../../../../common/constants/shared';
-import { ButtonGroupItem } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_button_group';
-import { SliderConfig } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_style_slider';
+
+import { ConfigColorTheme } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_color_theme';
+import { BoxPlot } from './box_plot';
 const sharedConfigs = getPlotlySharedConfigs();
 const VIS_CATEGORY = getPlotlyCategory();
-const {
-  DefaultMode,
-  LineWidth,
-  FillOpacity,
-  LegendPosition,
-  ShowLegend,
-  LabelAngle
-} = DefaultChartStyles;
 
-export const createBoxPlotTypeDefinition = (params: any = {}) => ({
+const { LegendPosition, ShowLegend } = DefaultChartStyles;
+export const createBoxPlotTypeDefinition = (params: any) => ({
   name: 'box',
   type: 'box',
   id: 'box_plot',
   label: 'Box plot',
   fullLabel: 'Box plot',
-  iconType: 'visLine',
-  category: VIS_CATEGORY.BASICS,
+  iconType: 'visBarVerticalStacked',
   selection: {
     dataLoss: 'nothing',
   },
-  icon: LensIconChartLine,
+  category: VIS_CATEGORY.BASICS,
+  icon: LensIconChartBar,
   categoryAxis: 'xaxis',
   seriesAxis: 'yaxis',
-  boxpoints: 'Outliers',
-  jitter: 0.3,
-  pointpos: -1.8,
+  orientation: 'v',
+  labelAngle: 0,
+  lineWidth: 1,
+  fillOpacity: 80,
+  groupWidth: 0.7,
+  boxWidth: 0.97,
+  showLegend: ShowLegend,
+  legendPosition: LegendPosition,
+  component: BoxPlot,
   editorConfig: {
     panelTabs: [
       {
@@ -86,13 +84,6 @@ export const createBoxPlotTypeDefinition = (params: any = {}) => ({
                   defaultSelections: [{ name: 'Right', id: LegendPosition }],
                 },
               },
-              {
-                title: 'Legend Size',
-                name: 'Legend Size',
-                component: InputFieldItem,
-                mapTo: 'legendSize',
-                eleType: 'input',
-              },
             ],
           },
           {
@@ -101,76 +92,31 @@ export const createBoxPlotTypeDefinition = (params: any = {}) => ({
             editor: ConfigBoxChartStyles,
             mapTo: 'chartStyles',
             schemas: [
-              // {
-              //   name: 'Mode',
-              //   component: ButtonGroupItem,
-              //   mapTo: 'style',
-              //   eleType: 'buttons',
-              //   props: {
-              //     options: [
-              //       { name: 'Lines', id: 'lines' },
-              //     ],
-              //     defaultSelections: [{ name: 'Lines', id: DefaultMode }],
-              //   },
-              // },
-              // {
-              //   name: 'Interpolation',
-              //   component: ButtonGroupItem,
-              //   mapTo: 'interpolation',
-              //   eleType: 'buttons',
-              //   props: {
-              //     options: [
-              //       { name: 'Linear', id: 'linear' },
-              //       { name: 'Smooth', id: 'spline' },
-              //       { name: 'Step before', id: 'hv' },
-              //       { name: 'Step after', id: 'vh' },
-              //     ],
-              //     defaultSelections: [{ name: 'Smooth', id: Interpolation }],
-              //   },
-              // },
               {
-                name: 'Line width',
-                component: SliderConfig,
-                mapTo: 'lineWidth',
-                defaultState: LineWidth,
-                eleType: 'slider',
+                name: 'Orientation',
+                component: ButtonGroupItem,
+                mapTo: 'orientation',
+                eleType: 'buttons',
                 props: {
-                  max: 10,
+                  options: [
+                    { name: 'Vertical', id: 'v' },
+                    { name: 'Horizontal', id: 'h' },
+                  ],
+                  defaultSelections: [{ name: 'Vertical', id: 'v' }],
                 },
               },
               {
-                name: 'Fill Opacity',
-                component: SliderConfig,
-                mapTo: 'fillOpacity',
-                defaultState: FillOpacity,
-                eleType: 'slider',
-                props: {
-                  max: 100,
-                },
-              },
-              // {
-              //   name: 'Point Size',
-              //   component: SliderConfig,
-              //   mapTo: 'pointSize',
-              //   defaultState: MarkerSize,
-              //   eleType: 'slider',
-              //   props: {
-              //     max: 40,
-              //   },
-              // },
-              {
-                title: 'Label Size',
                 name: 'Label Size',
                 component: InputFieldItem,
                 mapTo: 'labelSize',
                 eleType: 'input',
               },
               {
-                name: 'Rotate labels',
+                name: 'Rotate box labels',
                 component: SliderConfig,
-                mapTo: 'rotateLabels',
+                mapTo: 'rotateBoxLabels',
                 eleType: 'slider',
-                defaultState: LabelAngle,
+                defaultState: 0,
                 props: {
                   ticks: [
                     { label: '-90°', value: -90 },
@@ -184,21 +130,55 @@ export const createBoxPlotTypeDefinition = (params: any = {}) => ({
                   max: 90,
                 },
               },
+              {
+                name: 'Group width',
+                component: SliderConfig,
+                mapTo: 'groupWidth',
+                defaultState: 0.7,
+                props: {
+                  max: 1,
+                  step: 0.01,
+                },
+                eleType: 'slider',
+              },
+              {
+                name: 'Box width',
+                component: SliderConfig,
+                mapTo: 'boxWidth',
+                defaultState: 0.97,
+                props: {
+                  max: 1,
+                  step: 0.01,
+                },
+                eleType: 'slider',
+              },
+              {
+                name: 'Line width',
+                component: SliderConfig,
+                mapTo: 'lineWidth',
+                defaultState: 1,
+                props: {
+                  max: 10,
+                },
+                eleType: 'slider',
+              },
+              {
+                name: 'Fill Opacity',
+                component: SliderConfig,
+                mapTo: 'fillOpacity',
+                defaultState: 80,
+                props: {
+                  max: 100,
+                },
+                eleType: 'slider',
+              },
             ],
           },
           {
             id: 'color-theme',
-            name: 'Color theme',
+            name: 'Color Theme',
             editor: ConfigColorTheme,
             mapTo: 'colorTheme',
-            schemas: [],
-          },
-          {
-            id: 'thresholds',
-            name: 'Thresholds',
-            editor: ConfigThresholds,
-            mapTo: 'thresholds',
-            defaultState: [],
             schemas: [],
           },
         ],
@@ -221,34 +201,10 @@ export const createBoxPlotTypeDefinition = (params: any = {}) => ({
   visConfig: {
     layout: {
       ...sharedConfigs.layout,
-      ...{
-        colorway: PLOTLY_COLOR,
-        plot_bgcolor: 'rgba(0, 0, 0, 0)',
-        paper_bgcolor: 'rgba(0, 0, 0, 0)',
-        xaxis: {
-          fixedrange: true,
-          showgrid: false,
-          visible: true,
-        },
-        yaxis: {
-          fixedrange: true,
-          showgrid: false,
-          visible: true,
-        },
-        // boxmode:'group',
-      },
     },
     config: {
       ...sharedConfigs.config,
-      ...{
-        xaxis: {
-          automargin: true,
-        },
-        yaxis: {
-          automargin: true,
-        },
-      },
     },
+    isUniColor: false,
   },
-  component: BoxPlot,
 });

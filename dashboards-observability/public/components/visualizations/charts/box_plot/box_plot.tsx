@@ -3,219 +3,168 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useMemo } from 'react';
-import { take, isEmpty, last } from 'lodash';
+import React from 'react';
+import { isEmpty, last, take } from 'lodash';
 import { Plt } from '../../plotly/plot';
+import { LONG_CHART_COLOR, PLOTLY_COLOR } from '../../../../../common/constants/shared';
 import { AvailabilityUnitType } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_availability';
 import { ThresholdUnitType } from '../../../event_analytics/explorer/visualizations/config_panel/config_panes/config_controls/config_thresholds';
-import {
-  DefaultChartStyles,
-  FILLOPACITY_DIV_FACTOR,
-  PLOTLY_COLOR,
-} from '../../../../../common/constants/shared';
 import { hexToRgb } from '../../../event_analytics/utils/utils';
 import { EmptyPlaceholder } from '../../../event_analytics/explorer/visualizations/shared_components/empty_placeholder';
+import { FILLOPACITY_DIV_FACTOR } from '../../../../../common/constants/shared';
 
 export const BoxPlot = ({ visualizations, layout, config }: any) => {
+  const DEFAULT_LABEL_SIZE = 10;
+  const { vis } = visualizations;
   const {
-    DefaultMode,
-    Interpolation,
-    LineWidth,
-    FillOpacity,
-    MarkerSize,
-    LegendPosition,
-    ShowLegend,
-    LabelAngle,
-  } = DefaultChartStyles;
-  const {
-    data = {},
+    data,
     metadata: { fields },
   } = visualizations.data.rawVizData;
-  const { defaultAxes } = visualizations.data;
+  const lastIndex = fields.length - 1;
   const {
     dataConfig = {},
     layoutConfig = {},
     availabilityConfig = {},
   } = visualizations?.data?.userConfigs;
-  console.log('visualizations.data?.rawVizData ', visualizations.data?.rawVizData)
   const dataConfigTab =
     visualizations.data?.rawVizData?.box?.dataConfig &&
     visualizations.data.rawVizData.box.dataConfig;
-  console.log('dataConfigTab ', dataConfigTab)
-  const xaxis = dataConfigTab?.dimensions ? dataConfigTab?.dimensions.filter((item) => item.label) : [];
-  const yaxis = dataConfigTab?.metrics ? dataConfigTab?.metrics.filter((item) => item.label) : [];
-  console.log('xaxis ', xaxis)
-  const lastIndex = fields.length - 1;
+  const xaxis = dataConfigTab?.dimensions
+    ? dataConfigTab.dimensions.filter((item) => item.label)
+    : [];
+  const yaxis = dataConfigTab?.metrics ? dataConfigTab.metrics.filter((item) => item.label) : [];
+  const boxOrientation = dataConfig?.chartStyles?.orientation || vis.orientation;
+  const isVertical = boxOrientation === vis.orientation;
+  let box, valueSeries, valueForXSeries;
 
-  const mode = dataConfig?.chartStyles?.style || DefaultMode;
-  const lineShape = dataConfig?.chartStyles?.interpolation || Interpolation;
-  const lineWidth = dataConfig?.chartStyles?.lineWidth || LineWidth;
-  const showLegend = !(
-    dataConfig?.legend?.showLegend && dataConfig.legend.showLegend !== ShowLegend
-  );
-  const legendPosition = dataConfig?.legend?.position || LegendPosition;
-  const markerSize = dataConfig?.chartStyles?.pointSize || MarkerSize;
+  if (!isEmpty(xaxis) && !isEmpty(yaxis)) {
+    valueSeries = isVertical ? [...yaxis] : [...xaxis];
+    valueForXSeries = isVertical ? [...xaxis] : [...yaxis];
+  } else {
+    return <EmptyPlaceholder icon={visualizations?.vis?.iconType} />;
+  }
+
+  const tickAngle = dataConfig?.chartStyles?.rotateBoxLabels || vis.labelAngle;
+  const lineWidth = dataConfig?.chartStyles?.lineWidth || vis.lineWidth;
   const fillOpacity =
     dataConfig?.chartStyles?.fillOpacity !== undefined
       ? dataConfig?.chartStyles?.fillOpacity / FILLOPACITY_DIV_FACTOR
-      : FillOpacity / FILLOPACITY_DIV_FACTOR;
-  const tickAngle = dataConfig?.chartStyles?.rotateLabels || LabelAngle;
-  const labelSize = dataConfig?.chartStyles?.labelSize;
-  const legendSize = dataConfig?.legend?.legendSize;
+      : vis.fillOpacity / FILLOPACITY_DIV_FACTOR;
+  const boxWidth = 1 - (dataConfig?.chartStyles?.boxWidth || vis.boxWidth);
+  const groupWidth = 1 - (dataConfig?.chartStyles?.groupWidth || vis.groupWidth);
+  const showLegend = !(
+    dataConfig?.legend?.showLegend && dataConfig.legend.showLegend !== vis.showLegend
+  );
+  const legendPosition = dataConfig?.legend?.position || vis.legendPosition;
+  visualizations.data?.rawVizData?.dataConfig?.metrics
+    ? visualizations.data?.rawVizData?.dataConfig?.metrics
+    : [];
+  const labelSize = dataConfig?.chartStyles?.labelSize || DEFAULT_LABEL_SIZE;
 
   const getSelectedColorTheme = (field: any, index: number) =>
     (dataConfig?.colorTheme?.length > 0 &&
-      dataConfig.colorTheme.find((colorSelected) => colorSelected.name.name === field.name)
+      dataConfig.colorTheme.find((colorSelected) => colorSelected.name.name === field.label)
         ?.color) ||
     PLOTLY_COLOR[index % PLOTLY_COLOR.length];
 
-  if (isEmpty(xaxis) || isEmpty(yaxis))
-    return <EmptyPlaceholder icon={visualizations?.vis?.iconType} />;
+  const prepareData = (valueForXSeries) => {
+    return (valueForXSeries.map((dimension: any) => data[dimension.label]))?.reduce(
+      (prev, cur) => {
+        return prev.map((i, j) => `${i}, ${cur[j]}`);
+      }
+    );
+  };
 
-  let valueSeries;
-  if (!isEmpty(xaxis) && !isEmpty(yaxis)) {
-    valueSeries = [...yaxis];
-  } else {
-    valueSeries = (defaultAxes.yaxis || take(fields, lastIndex > 0 ? lastIndex : 1))
-      .map((item, i) => ({ ...item, side: i === 0 ? 'left' : 'right' }));
-  }
 
-  let multiMetrics = {};
-  const [calculatedLayout, BoxValues] = useMemo(() => {
-    const isBarMode = mode === 'bar';
-    let calculatedBoxValues = valueSeries.map((field: any, index: number) => {
-      const selectedColor = getSelectedColorTheme(field, index);
-      const fillColor = hexToRgb(selectedColor, fillOpacity);
-      const barMarker = {
-        color: fillColor,
+  const metricsData = prepareData(valueSeries);
+  box = valueSeries.map((field: any, index: number) => {
+    const selectedColor = getSelectedColorTheme(field, index);
+    return {
+      ...(isVertical && {
+        y: data[field.name],
+        boxpoints: 'all',
+        jitter: 0.3,
+        pointpos: -1.8,
+      }),
+      ...(!isVertical && { x: metricsData }),
+      type: vis.type,
+      marker: {
+        color: hexToRgb(selectedColor, fillOpacity),
         line: {
           color: selectedColor,
           width: lineWidth,
         },
-      };
-      const fillProperty = {
-        fill: 'tozeroy',
-        fillcolor: fillColor,
-      };
-      const multiYaxis = { yaxis: `y${index + 1}` };
-      multiMetrics = {
-        ...multiMetrics,
-        [`yaxis${index > 0 ? index + 1 : ''}`]: {
-          titlefont: {
-            color: selectedColor,
-          },
-          tickfont: {
-            color: selectedColor,
-            ...(labelSize && {
-              size: labelSize,
-            }),
-          },
-          overlaying: 'y',
-          side: field.side,
-        },
-      };
-
-      return {
-        // x: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name],
-        y: data[field.label],
-        type: 'box',
-        name: field.label,
-        mode,
-        // ...(!['bar', 'markers'].includes(mode) && fillProperty),
-        // quartilemethod:'inclusive',
-      //   hoveron: 'boxes+points',
-        
-      //   boxpoints: 'all',
-      // jitter: 0.3,
-      // pointpos: -1.8,
-        line: {
-          shape: lineShape,
-          width: lineWidth,
-          color: selectedColor,
-        },
-        marker: {
-          size: markerSize,
-          ...(isBarMode && barMarker),
-        },
-        ...(index >= 1 && multiYaxis),
-      };
-    });
-
-
-    const mergedLayout = {
-      ...layout,
-      ...layoutConfig.layout,
-      title: dataConfig?.panelOptions?.title || layoutConfig.layout?.title || '',
-      legend: {
-        ...layout.legend,
-        orientation: legendPosition,
-        ...(legendSize && {
-          font: {
-            size: legendSize,
-          },
-        }),
       },
-      xaxis: {
-        tickangle: tickAngle,
-        automargin: true,
-        tickfont: {
-          ...(labelSize && {
-            size: labelSize,
-          }),
-        },
-      },
-      showlegend: showLegend,
-      // ...(isBarMode && layoutForBarMode),
-      ...(multiMetrics && multiMetrics),
+      name: field.name,
+      orientation: boxOrientation,
+    };
+  });
+
+  // then use the LONG_CHART_COLOR for all the box in the chart
+  const plotlyColorway =
+    data[fields[lastIndex].name].length < 16 ? PLOTLY_COLOR : [LONG_CHART_COLOR];
+  const mergedLayout = {
+    colorway: plotlyColorway,
+    ...layout,
+    ...(layoutConfig.layout && layoutConfig.layout),
+    title: dataConfig?.panelOptions?.title || layoutConfig.layout?.title || '',
+    boxmode: dataConfig?.chartStyles?.mode || visualizations.vis.mode,
+    font: {
+      size: labelSize,
+    },
+    xaxis: {
+      tickangle: tickAngle,
+      automargin: true,
+    },
+    boxgap: groupWidth,
+    boxgroupgap: boxWidth,
+    legend: {
+      ...layout.legend,
+      orientation: legendPosition,
+    },
+    showlegend: showLegend,
+  };
+  if (dataConfig.thresholds || availabilityConfig.level) {
+    const thresholdTraces = {
+      x: [],
+      y: [],
+      mode: 'text',
+      text: [],
+    };
+    const thresholds = dataConfig.thresholds ? dataConfig.thresholds : [];
+    const levels = availabilityConfig.level ? availabilityConfig.level : [];
+
+    const mapToLine = (list: ThresholdUnitType[] | AvailabilityUnitType[], lineStyle: any) => {
+      return list.map((thr: ThresholdUnitType) => {
+        thresholdTraces.x.push(
+          data[!isEmpty(xaxis) ? xaxis[xaxis.length - 1]?.label : fields[lastIndex].name][0]
+        );
+        thresholdTraces.y.push(thr.value * (1 + 0.06));
+        thresholdTraces.text.push(thr.name);
+        return {
+          type: 'box',
+          x0: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name][0],
+          y0: thr.value,
+          x1: last(data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name]),
+          y1: thr.value,
+          name: thr.name || '',
+          opacity: 0.7,
+          line: {
+            color: thr.color,
+            width: 3,
+            ...lineStyle,
+          },
+        };
+      });
     };
 
-    if (dataConfig.thresholds || availabilityConfig.level) {
-      const thresholdTraces = {
-        x: [],
-        y: [],
-        mode: 'text',
-        text: [],
-      };
-      const thresholds = dataConfig.thresholds ? dataConfig.thresholds : [];
-      const levels = availabilityConfig.level ? availabilityConfig.level : [];
-
-      const mapToLine = (list: ThresholdUnitType[] | AvailabilityUnitType[], lineStyle: any) => {
-        return list.map((thr: ThresholdUnitType) => {
-          thresholdTraces.x.push(
-            data[!isEmpty(xaxis) ? xaxis[xaxis.length - 1]?.label : fields[lastIndex].name][0]
-          );
-          thresholdTraces.y.push(thr.value * (1 + 0.06));
-          thresholdTraces.text.push(thr.name);
-          return {
-            type: 'box',
-            x0: data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name][0],
-            y0: thr.value,
-            x1: last(data[!isEmpty(xaxis) ? xaxis[0]?.label : fields[lastIndex].name]),
-            y1: thr.value,
-            name: thr.name || '',
-            opacity: 0.7,
-            line: {
-              color: thr.color,
-              width: 3,
-              ...lineStyle,
-            },
-          };
-        });
-      };
-
-      mergedLayout.shapes = [
-        ...mapToLine(thresholds, { dash: 'dashdot' }),
-        ...mapToLine(levels, {}),
-      ];
-      calculatedBoxValues = [...calculatedBoxValues, thresholdTraces];
-    }
-    return [mergedLayout, calculatedBoxValues];
-  }, [data, fields, lastIndex, layout, layoutConfig, xaxis, yaxis, mode, valueSeries]);
-
+    mergedLayout.shapes = [...mapToLine(thresholds, { dash: 'dashdot' }), ...mapToLine(levels, {})];
+    box = [...box, thresholdTraces];
+  }
   const mergedConfigs = {
     ...config,
     ...(layoutConfig.config && layoutConfig.config),
   };
-  console.log('BoxValues ',BoxValues)
-  return <Plt data={BoxValues} layout={calculatedLayout} config={mergedConfigs} />
+
+  return <Plt data={box} layout={mergedLayout} config={mergedConfigs} />;
 };
